@@ -1,6 +1,6 @@
 <template>
   <el-container class="container_box">
-    <el-aside class="option_box">
+    <el-aside class="sidebar_box">
       <Sidebar></Sidebar>
     </el-aside>
     <el-main class="content_box">
@@ -30,7 +30,7 @@ $option: 250px;
   width: 100%;
   height: 100%;
 
-  .option_box {
+  .sidebar_box {
     width: $option;
   }
 
