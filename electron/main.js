@@ -15,19 +15,21 @@ const createWindow = () => {
         minHeight: 450,
         // 窗口图标。 在 Windows 上推荐使用 ICO 图标来获得最佳的视觉效果, 默认使用可执行文件的图标.
         // 在根目录中新建 build 文件夹存放图标等文件
-        icon: path.resolve(__dirname, "../src/assets/icon-20.ico"),
+        icon: path.resolve(__dirname, "../build/icon/icon-20.ico"),
     });
     mainWindow.maximize()
     // 使用 loadURL 加载 http://localhost:9527 ，也就是 Vue 项目地址
     mainWindow.loadURL("http://localhost:9527/");
     // 如果使用了 nginx 代理，url 改为代理地址
     //   mainWindow.loadURL("https://example.com/");
+
+    //打包
+    // mainWindow.loadURL(`file://${path.join(__dirname, "../dist/index.html")}`);
 };
 
 // 在应用准备就绪时调用函数
 app.whenReady().then(() => {
     createWindow();
-
     app.on("activate", () => {
         // 通常在 macOS 上，当点击 dock 中的应用程序图标时，如果没有其他
         // 打开的窗口，那么程序会重新创建一个窗口。
