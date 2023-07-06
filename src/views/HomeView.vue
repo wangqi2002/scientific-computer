@@ -4,7 +4,7 @@
       <Sidebar></Sidebar>
     </el-aside>
     <el-main class="content_box">
-      hhh
+      <Compute></Compute>
     </el-main>
   </el-container>
 </template>
@@ -13,29 +13,29 @@
 import { ref, provide, onMounted } from "vue";
 
 import Sidebar from "@/components/Sidebar.vue";
+import Compute from "@/components/computeView.vue";
 
 
 onMounted(() => {
 });
 </script>
 <style lang="scss">
-$option: 250px;
-
 * {
   padding: 0;
   margin: 0;
 }
 
 .container_box {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 
   .sidebar_box {
-    width: $option;
+    height: 100%;
   }
 
   .content_box {
-    width: calc(100% - $option);
+    flex: 1;
     height: 100%;
     padding: 0;
     overflow: hidden;
