@@ -3,7 +3,7 @@
         <el-tabs v-model="sidebarTabsValue" tab-position="left" type="border-card" class="sidebar_tabs"
             @tab-click="handleTabpane">
             <el-tab-pane v-for="item in sidebarTabs" :key="item.name" :label="item.title" :name="item.name">
-                <div class="pane_box" v-if="item.name === 'welcome'">welcome</div>
+                <div class="pane_box" v-if="item.name === 'welcome'">{{ item.content }}</div>
                 <div class="pane_box" v-else>
                     <div class="pane_title">{{ item.content }}</div>
                     <div class="pane_compute">

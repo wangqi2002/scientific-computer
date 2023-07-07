@@ -3,7 +3,7 @@ const exportFormula = () => {
         {
             title: 'welcome',
             name: 'welcome',
-            content: 'welcome',
+            content: '写一些简介或者放些图片进行装饰',
         }, {
             title: '射频工具',
             name: 'rf',
@@ -16,7 +16,7 @@ const exportFormula = () => {
                     children: [
                         {
                             title: '驻波系数、dBm、dBμV、dBmW、V换算表',
-                            name: 'dBm-dBμV-dBmW-V',
+                            name: 'dBm-dBμV-dBmW',
                             content: '驻波系数、dBm、dBμV、dBmW、V换算表',
                         }, {
                             title: 'W, dBW 和 dBm转换在线计算器',

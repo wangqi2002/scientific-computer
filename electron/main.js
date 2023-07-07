@@ -1,7 +1,9 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu, globalShortcut } = require('electron')
 const path = require("path")
 
 let mainWindow;
+
+Menu.setApplicationMenu(null)
 
 const createWindow = () => {
     // 创建浏览器窗口
@@ -29,6 +31,9 @@ const createWindow = () => {
 
 // 在应用准备就绪时调用函数
 app.whenReady().then(() => {
+    globalShortcut.register('Alt+D', function () {
+        mainWindow.webContents.openDevTools()
+    })
     createWindow();
     app.on("activate", () => {
         // 通常在 macOS 上，当点击 dock 中的应用程序图标时，如果没有其他

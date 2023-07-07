@@ -1,17 +1,14 @@
 <template>
     <div class="compute_box">
         <div class="compute_title">{{ title }}</div>
-        <div class="compute_content">
-            <img src="@/assets/unitConversion/dbmchart.gif" />
-            <div></div>
-        </div>
+        <div class="compute_content">hhhhhhhhhh</div>
     </div>
 </template>
     
 <script setup>
 import { ref } from "vue";
 
-const title = ref("W, dBW 和 dBm转换在线计算器");
+const title = ref("驻波系数、dBm、dBμV、dBmW、V换算表");
 
 </script>
 

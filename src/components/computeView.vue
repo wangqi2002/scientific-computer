@@ -1,8 +1,15 @@
 <template>
-    <div class="compute_box">
-        <transition name="router-fade" mode="out-in">
+    <div class="compute">
+        <!-- <transition name="router-fade" mode="out-in">
             <router-view></router-view>
-        </transition>
+        </transition> -->
+        <router-view v-slot="{ Component }">
+            <transition name="router-fade" mode="out-in">
+                <keep-alive>
+                    <component :is="Component" />
+                </keep-alive>
+            </transition>
+        </router-view>
     </div>
 </template>
     
@@ -13,6 +20,6 @@ const msg = ref("hello world, compute");
 
 </script>
     
-<style src="@/style/compute.scss"  lang="scss"></style>
+<style src="@/style/computeView.scss"  lang="scss"></style>
 <style lang="scss"></style>
   

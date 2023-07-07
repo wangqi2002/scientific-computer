@@ -15,7 +15,7 @@ const routes = [
     component: () => import('@/components/computeView.vue'),
     children: [
       {
-        path: 'welcome',
+        path: '/',
         name: 'welcome',
         component: () => import('@/components/welcome.vue'),
       },
@@ -25,9 +25,9 @@ const routes = [
         component: () => import('@/components/rf/unitConversion/W-dDW-dBm.vue'),
       },
       {
-        path: 'dBm-dBμV-dBmW-V',
-        name: 'dBm-dBμV-dBmW-V',
-        component: () => import('@/components/rf/unitConversion/dBm-dBμV-dBmW-V.vue'),
+        path: 'dBm-dBμV-dBmW',
+        name: 'dBm-dBμV-dBmW',
+        component: () => import('@/components/rf/unitConversion/dBm-dBμV-dBmW.vue'),
       },
       {
         path: 'helical-inductance',

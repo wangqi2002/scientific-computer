@@ -1,6 +1,6 @@
 .sidebar_box {
     $sidebar-width: 450px;
-    $plane-color: #f6f6f6;
+    $pane-background-color: #f6f6f6;
     width: $sidebar-width;
     height: 100%;
 
@@ -29,12 +29,13 @@
             width: calc($sidebar-width - 110px);
             height: 100%;
             padding: 10px 5px;
-            background-color: $plane-color;
+            background-color: $pane-background-color;
 
             .el-tab-pane {
                 height: 100%;
                 .pane_box {
                     height: 100%;
+                    color: #000000;
                     .pane_title {
                         width: 100%;
                         height: 29px;
@@ -54,11 +55,11 @@
                             .el-collapse-item__header {
                                 height: 40px;
                                 font-size: 14px;
-                                background-color: $plane-color;
+                                background-color: $pane-background-color;
                             }
                             .el-collapse-item__content {
                                 padding-bottom: 20px;
-                                background-color: $plane-color;
+                                background-color: $pane-background-color;
                                 .pane_card_content {
                                     width: calc(100% - 15px);
                                     padding-left: 15px;

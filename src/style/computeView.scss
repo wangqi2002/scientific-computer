@@ -1,0 +1,15 @@
+.compute {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+.router-fade-enter-active,
+.router-fade-leave-active {
+    transition: opacity 0.3s;
+}
+
+.router-fade-enter,
+.router-fade-leave-active {
+    opacity: 0;
+}

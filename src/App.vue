@@ -22,16 +22,6 @@ onMounted(() => {
   text-align: center;
   color: #2c3e50;
 
-  .router-fade-enter-active,
-  .router-fade-leave-active {
-    transition: opacity 0.3s;
-  }
-
-  .router-fade-enter,
-  .router-fade-leave-active {
-    opacity: 0;
-  }
-
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
