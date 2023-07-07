@@ -13,9 +13,10 @@
     }
 
     .compute_content {
-        text-align: left;
         flex-grow: 1;
-        width: calc(100% - 20px);
-        margin: 0 10px;
+        width: calc(100% - 10px);
+        margin-left: 10px;
+        text-align: left;
+        overflow-y: auto;
     }
 }

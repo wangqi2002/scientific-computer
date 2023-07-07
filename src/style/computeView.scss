@@ -1,5 +1,7 @@
 .compute {
+    $compute-width: 600px;
     width: 100%;
+    min-width: $compute-width;
     height: 100vh;
     background-color: white;
 }

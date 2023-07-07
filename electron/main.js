@@ -10,11 +10,11 @@ const createWindow = () => {
     mainWindow = new BrowserWindow({
         // 默认窗口标题，如果由loadURL()加载的HTML文件中含有标签<title>，此属性将被忽略。
         title: "scientific-computer",
-        width: 800,
+        width: 1000,
         height: 600,
         // 设置最小尺寸
-        minWidth: 600,
-        minHeight: 450,
+        minWidth: 1000,
+        minHeight: 600,
         // 窗口图标。 在 Windows 上推荐使用 ICO 图标来获得最佳的视觉效果, 默认使用可执行文件的图标.
         // 在根目录中新建 build 文件夹存放图标等文件
         icon: path.resolve(__dirname, "../build/icon/icon-20.ico"),

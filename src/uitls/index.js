@@ -20,7 +20,7 @@ const exportFormula = () => {
                             content: '驻波系数、dBm、dBμV、dBmW、V换算表',
                         }, {
                             title: 'W, dBW 和 dBm转换在线计算器',
-                            name: 'W-dDW-dBm',
+                            name: 'W-dBW-dBm',
                             content: 'W, dBW 和 dBm转换在线计算器',
                         },/*  {
                             title: 'V, dBV 和 dBuV转换在线计算器',

@@ -1,5 +1,5 @@
 .sidebar_box {
-    $sidebar-width: 450px;
+    $sidebar-width: 400px;
     $pane-background-color: #f6f6f6;
     width: $sidebar-width;
     height: 100%;
@@ -64,10 +64,16 @@
                                     width: calc(100% - 15px);
                                     padding-left: 15px;
                                     text-align: left;
+                                    position: relative;
+
                                     .compute_icon {
-                                        vertical-align: middle;
+                                        width: 25px;
+                                        position: absolute;
+                                        top: 10%;
                                     }
                                     .compute_item {
+                                        width: calc(100% - 50px);
+                                        margin: 0 25px;
                                         padding-top: 5px;
                                         display: inline-block;
                                         color: black;

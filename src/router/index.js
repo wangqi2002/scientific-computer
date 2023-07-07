@@ -20,9 +20,9 @@ const routes = [
         component: () => import('@/components/welcome.vue'),
       },
       {
-        path: 'W-dDW-dBm',
-        name: 'W-dDW-dBm',
-        component: () => import('@/components/rf/unitConversion/W-dDW-dBm.vue'),
+        path: 'W-dBW-dBm',
+        name: 'W-dBW-dBm',
+        component: () => import('@/components/rf/unitConversion/W-dBW-dBm.vue'),
       },
       {
         path: 'dBm-dBμV-dBmW',

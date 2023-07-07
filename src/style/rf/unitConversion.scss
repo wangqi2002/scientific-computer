@@ -1,0 +1,103 @@
+.w_dbw_dbm {
+    $top-height: 260px;
+    $bottom-height: 180px;
+
+    height: 100%;
+
+    .top {
+        height: $top-height;
+        text-align: center;
+        .left {
+            width: 50%;
+            text-align: right;
+            display: inline-block;
+
+            img {
+                height: $top-height;
+            }
+        }
+        .right {
+            width: 50%;
+            height: $top-height;
+            line-height: $top-height;
+            display: inline-block;
+            img {
+                height: calc($top-height / 4);
+                margin: 25px 0;
+                padding-left: 50px;
+                display: block;
+            }
+        }
+    }
+
+    .bottom {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 18px;
+        position: relative;
+
+        .box_left {
+            height: $bottom-height;
+            line-height: $bottom-height;
+            text-align: right;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        .box_right {
+            height: $bottom-height;
+            line-height: $bottom-height;
+            text-align: left;
+            display: inline-block;
+            margin-left: 60px;
+
+            .item {
+                height: calc($bottom-height / 3);
+                line-height: calc($bottom-height / 3);
+                margin-left: 20px;
+
+                .item_top {
+                    height: calc($bottom-height / 3 * 0.7);
+                    line-height: calc($bottom-height / 3 * 0.9);
+
+                    .convert_input {
+                        height: 20px;
+                        border-radius: 5px;
+                    }
+
+                    .convert_unit {
+                        width: 60px;
+                        display: inline-block;
+                        text-align: center;
+                    }
+
+                    .convert_btn {
+                        width: 70px;
+                        height: 25px;
+                        background-color: #c9d4b3;
+                        border-radius: 5px;
+                        border: none;
+                    }
+                }
+
+                .item_bottom {
+                    height: calc($bottom-height / 3 * 0.3);
+                    line-height: calc($bottom-height / 3 * 0.3);
+                    padding-left: 50px;
+                    color: red;
+                    font-size: 12px;
+                }
+            }
+        }
+        .convert_clear {
+            margin-top: 20px;
+            .clear_btn {
+                width: 100px;
+                height: 30px;
+                border-radius: 5px;
+                border: none;
+                background-color: #c9d4b3;
+            }
+        }
+    }
+}

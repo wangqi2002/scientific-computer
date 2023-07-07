@@ -34,7 +34,13 @@ const sidebarTabsValue = ref('welcome')
 const sidebarTabs = ref([])
 
 const handleTabpane = (e) => {
-    console.log(e.props.label)
+    let sidebar = document.querySelector(".sidebar_box")
+    let tabpane = document.querySelector(".sidebar_tabs .el-tabs__content")
+    if (e.props.name === sidebarTabsValue.value) {
+        sidebar.style.width = 100 + 'px'
+    } else {
+        sidebar.style.width = 400 + 'px'
+    }
 }
 
 onMounted(() => {
