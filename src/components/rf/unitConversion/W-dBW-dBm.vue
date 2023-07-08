@@ -5,11 +5,11 @@
             <div class="w_dbw_dbm">
                 <div class="top">
                     <div class="left">
-                        <img src="@/assets/rf-unitConversion/dbmchart.gif" />
+                        <img src="@/assets/rf/dbmchart.gif" />
                     </div>
                     <div class="right">
-                        <img src="@/assets/rf-unitConversion/dbpower.gif" />
-                        <img src="@/assets/rf-unitConversion/dbpowerref.gif" />
+                        <img src="@/assets/rf/dbpower.gif" />
+                        <img src="@/assets/rf/dbpowerref.gif" />
                     </div>
                 </div>
                 <div class="bottom">
@@ -81,15 +81,18 @@ const WValidate = ref("")
 
 const dBW_change = (e) => {
     let reg = /^(\-|\+)?\d+(\.\d+)?$/
-    if (reg.test(e.target.value)) {
-        dBWValidate.value = ''
+    if (e.target.value !== '') {
+        if (reg.test(e.target.value)) {
+            dBWValidate.value = ''
+        } else {
+            dBWValidate.value = "数据格式不正确"
+        }
     } else {
-        dBWValidate.value = "数据格式不正确"
+        dBWValidate.value = ''
     }
 }
 const handledBW = () => {
     let formData = dBW_to_dBmW(dBW_value.value)
-    console.log(formData)
     dBW_value.value = formData.dBW
     dBm_value.value = formData.dBm
     W_value.value = formData.W
@@ -97,15 +100,18 @@ const handledBW = () => {
 
 const dBm_change = (e) => {
     let reg = /^(\-|\+)?\d+(\.\d+)?$/
-    if (reg.test(e.target.value)) {
-        dBmValidate.value = ''
+    if (e.target.value !== '') {
+        if (reg.test(e.target.value)) {
+            dBmValidate.value = ''
+        } else {
+            dBmValidate.value = "数据格式不正确"
+        }
     } else {
-        dBmValidate.value = "数据格式不正确"
+        dBmValidate.value = ''
     }
 }
 const handledBm = () => {
     let formData = dBm_to_dBWW(dBm_value.value)
-    console.log(formData)
     dBW_value.value = formData.dBW
     dBm_value.value = formData.dBm
     W_value.value = formData.W
@@ -113,15 +119,18 @@ const handledBm = () => {
 
 const W_change = (e) => {
     let reg = /^(\+)?\d+(\.\d+)?$/
-    if (reg.test(e.target.value)) {
-        WValidate.value = ''
+    if (e.target.value !== '') {
+        if (reg.test(e.target.value)) {
+            WValidate.value = ''
+        } else {
+            WValidate.value = "数据格式不正确"
+        }
     } else {
-        WValidate.value = "数据格式不正确"
+        WValidate.value = ''
     }
 }
 const handleW = () => {
     let formData = W_to_dBWdBm(W_value.value)
-    console.log(formData)
     dBW_value.value = formData.dBW
     dBm_value.value = formData.dBm
     W_value.value = formData.W

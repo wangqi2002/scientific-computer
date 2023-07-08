@@ -1,0 +1,54 @@
+.helical_inductance {
+    $top-height: 260px;
+    $bottom-height: 250px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        height: $top-height;
+        padding-top: 30px;
+    }
+    .bottom {
+        height: $bottom-height;
+
+        .form {
+            width: 500px;
+            margin: 0 auto;
+            text-align: left;
+
+            .item {
+                padding-left: 20px;
+
+                .item_name {
+                    width: 120px;
+                    display: inline-block;
+                    text-align: right;
+                }
+                .item_input {
+                    width: 180px;
+                    height: 20px;
+                    padding: 0 10px;
+                    margin: 5px 10px 5px 40px;
+                    border-radius: 5px;
+                }
+                .tip {
+                    color: red;
+                    font-size: 12px;
+                }
+            }
+        }
+        .operate {
+            margin: 10px auto;
+
+            .btn {
+                width: 120px;
+                height: 30px;
+                margin: 0 5px;
+                border: none;
+                border-radius: 8px;
+                background-color: #c3d08b;
+            }
+        }
+    }
+}
