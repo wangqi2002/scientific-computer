@@ -22,19 +22,41 @@ const exportFormula = () => {
                             title: 'W, dBW 和 dBm转换在线计算器',
                             name: 'W-dBW-dBm',
                             content: 'W, dBW 和 dBm转换在线计算器',
-                        },/*  {
-                            title: 'V, dBV 和 dBuV转换在线计算器',
-                            name: 'V-dBV-dBuV',
-                            content: 'V, dBV 和 dBuV转换在线计算器',
                         }, {
-                            title: 'Z-S-Y-A参数转换计算器',
-                            name: 'Z-S-Y-A',
-                            content: 'Z-S-Y-A参数转换计算器',
-                        }, */]
+                            title: '电压驻波比计算器',
+                            name: 'Voltage-standing-wave-ratio',
+                            content: '电压驻波比计算器',
+                        },]
                 }, {
                     title: '传输线工具',
                     name: 'transmissionLine',
                     content: '传输线工具',
+                    children: [
+                        {
+                            title: '缝隙线计算工具 | Slot Line Calculator',
+                            name: 'Slit-line',
+                            content: '缝隙线计算工具 | Slot Line Calculator',
+                        },
+                        {
+                            title: '带状线计算工具 | Strip Line Calculator',
+                            name: 'Strip-line',
+                            content: '带状线计算工具 | Strip Line Calculator',
+                        },
+                        {
+                            title: '微带线特征阻抗计算器',
+                            name: 'Microstrip_line_characteristic_impedance',
+                            content: '微带线特征阻抗计算器',
+                        },
+                        {
+                            title: '微带线计算工具 | Microstrip Line Calculator',
+                            name: 'Microstrip-line',
+                            content: '微带线计算工具 | Microstrip Line Calculator',
+                        },
+                        {
+                            title: '趋肤效应的深度计算工具 | Skin Effect Depth',
+                            name: 'Skin-effect-depth',
+                            content: '趋肤效应的深度计算工具 | Skin Effect Depth',
+                        },]
                 }, {
                     title: '无源工具',
                     name: 'passive',

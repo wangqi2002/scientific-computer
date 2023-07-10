@@ -14,7 +14,7 @@
         "postinstall": "electron-builder install-app-deps"
     },
     "build": {
-        "appId": "your.id",
+        "appId": "B3058S",
         "productName": "scientific-computer",
         "copyright": "Copyright © year ${author}",
         "directories": {
@@ -52,9 +52,10 @@
         },
         "nsis": {
             "oneClick": false,
+            "allowElevation": true,
             "allowToChangeInstallationDirectory": true,
             "installerIcon": "build/icon/icon-256.ico",
-            "uninstallerIcon": "build/icon/icon-256.ico"
+            "uninstallerIcon": "build/icon/un-icon-256.ico"
         }
     },
     "dependencies": {
