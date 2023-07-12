@@ -37,7 +37,11 @@ const handleTabpane = (e) => {
     let sidebar = document.querySelector(".sidebar_box")
     let tabpane = document.querySelector(".sidebar_tabs .el-tabs__content")
     if (e.props.name === sidebarTabsValue.value) {
-        sidebar.style.width = 100 + 'px'
+        if (sidebar.style.width === '400px') {
+            sidebar.style.width = 100 + 'px'
+        } else {
+            sidebar.style.width = 400 + 'px'
+        }
     } else {
         sidebar.style.width = 400 + 'px'
     }

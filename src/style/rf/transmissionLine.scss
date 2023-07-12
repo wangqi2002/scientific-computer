@@ -14,7 +14,8 @@
 //         background-color: antiquewhite;
 //     }
 // }
-.slit_line {
+.slit_line,
+.strip_line {
     $top-height: 320px;
     $bottom-height: 180px;
 
@@ -22,7 +23,7 @@
     text-align: center;
 
     .top {
-        height: $top-height;
+        // height: $top-height;
         // background-color: aliceblue;
 
         .top_top {
@@ -68,12 +69,12 @@
             }
         }
         .big_input {
-            width: 120px;
-            padding-left: 10px;
+            width: 115px;
+            padding: 0 7px;
         }
         .small_input {
-            width: 70px;
-            padding-left: 10px;
+            width: 65px;
+            padding: 0 7px;
         }
         .btn {
             width: 60px;
@@ -84,8 +85,8 @@
         }
     }
     .bottom {
-        margin-top: 20px;
-        padding-left: 10%;
+        width: 500px;
+        margin: 20px calc((100% - 500px) / 2);
         text-align: left;
 
         p {

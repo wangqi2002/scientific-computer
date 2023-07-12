@@ -66,7 +66,7 @@
                         <span class="bottom_span"><b>k</b></span>
                         <input class="small_input" type="number" v-model="k_value" @change="" />
                         <span class="bottom_span"><b>lambda/4</b></span>
-                        <input class="small_input" type="number" v-model="lam_value" @change="" />
+                        <input class="small_input" type="number" v-model="l4_value" @change="" />
                         [mm]
                         <div style="margin-top: 20px;">
                             <button class="btn" style="width:100px; height:30px" @click="handleClear">清空</button>
@@ -80,7 +80,7 @@
                         <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)当计算线宽(w)的特性阻抗(Zo)时。
                         输入w，然后点击[Analyze]按钮。
                         <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)计算特性阻抗(Zo)的线宽(w)时。
-                        输入Zo，点击[合成]按钮。
+                        输入Zo，点击[Svnthesis]按钮。
                     </p>
                     <p>3.给出了计算结果。</p>
 
@@ -96,24 +96,25 @@
     
 <script setup>
 import { ref } from "vue";
+import { ElMessage } from 'element-plus'
 
 import {
-    Analyze,
-    Svnthesis
+    slitAnalyze,
+    slitSvnthesis
 } from "@/uitls/compute/rf/transmissionLine"
 
 const title = ref("缝隙线计算工具 | Slot Line Calculator");
 
-const er_value = ref(1)
-const h_value = ref(2)
-const f_value = ref(3)
+const er_value = ref()
+const h_value = ref()
+const f_value = ref()
 const W_value = ref()
 const Zo_value = ref()
 const Z_value = ref()
 const WW_value = ref()
 const ef_value = ref()
 const k_value = ref()
-const lam_value = ref()
+const l4_value = ref()
 
 
 const getFormData = () => {
@@ -127,7 +128,7 @@ const getFormData = () => {
         WW: WW_value.value,
         ef: ef_value.value,
         k: k_value.value,
-        lam: lam_value.value
+        l4: l4_value.value
     }
     return formData
 }
@@ -159,20 +160,26 @@ const setFormData = (formData) => {
     if (formData.k !== undefined) {
         k_value.value = formData.k
     }
-    if (formData.lam !== undefined) {
-        lam_value.value = formData.lam
+    if (formData.l4 !== undefined) {
+        l4_value.value = formData.l4
     }
 }
 
 const handleAnalyze = () => {
     let formData = getFormData()
-    console.log(Analyze(formData))
-    setFormData(Analyze(formData))
+    if ((formData.er !== undefined && formData.er !== '') || (formData.h !== undefined && formData.h !== '') || (formData.f !== undefined && formData.f !== '')) {
+        setFormData(slitAnalyze(formData))
+    } else {
+        ElMessage('请输入数据')
+    }
 }
 const handleSvnthesis = () => {
     let formData = getFormData()
-    console.log(Svnthesis(formData))
-    setFormData(Svnthesis(formData))
+    if ((formData.er !== undefined && formData.er !== '') || (formData.h !== undefined && formData.h !== '') || (formData.f !== undefined && formData.f !== '')) {
+        setFormData(slitSvnthesis(formData))
+    } else {
+        ElMessage('请输入数据')
+    }
 }
 const handleClear = () => {
     er_value.value = ''
@@ -184,7 +191,7 @@ const handleClear = () => {
     WW_value.value = ''
     ef_value.value = ''
     k_value.value = ''
-    lam_value.value = ''
+    l4_value.value = ''
 }
 
 </script>
