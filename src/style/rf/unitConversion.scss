@@ -101,3 +101,74 @@
         }
     }
 }
+
+.Voltage_s_w_r {
+    $top-height: 260px;
+    $bottom-height: 180px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        // height: $top-height;
+        text-align: left;
+        margin-bottom: 20px;
+
+        p {
+            text-indent: 2em;
+            line-height: 1.5em;
+        }
+    }
+    .bottom {
+        padding-bottom: 30px;
+        .compute_table {
+            margin: 0 auto;
+            tr {
+                height: 36px;
+                text-align: left;
+                td {
+                    padding-left: 10px;
+                    .big_input {
+                        width: 150px;
+                        padding-left: 10px;
+                    }
+                    .small_input {
+                        width: 70px;
+                        padding-left: 10px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            tr:nth-child(4) {
+                background-color: #eee;
+            }
+            tr:nth-child(6) {
+                background-color: #eee;
+            }
+        }
+        .btn {
+            width: 100px;
+            height: 25px;
+            line-height: 25px;
+            margin: auto 10px;
+            background-color: #c9d4b3;
+            border: none;
+            border-radius: 5px;
+        }
+    }
+}
+
+// .Voltage_s_w_r {
+//     $top-height: 260px;
+//     $bottom-height: 180px;
+
+//     height: 100%;
+//     text-align: center;
+
+//     .top {
+//         height: $top-height;
+//     }
+//     .bottom {
+//         height: $bottom-height;
+//     }
+// }

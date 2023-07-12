@@ -13,53 +13,6 @@ function exp10(x) {
     return (y);
 }
 
-//----  W-dBW-dBm  ----
-function dBW_to_dBmW(value) {
-    let obj = {
-        dBW: '',
-        dBm: '',
-        W: ''
-    };
-    obj.dBW = parseFloat(value);
-    if (isNaN(obj.dBW)) {
-        obj.dBW = "";
-        return obj;
-    }
-    obj.W = exp10(obj.dBW / 10);
-    obj.dBm = obj.dBW + 30;
-    return obj;
-}
-function dBm_to_dBWW(value) {
-    let obj = {
-        dBW: '',
-        dBm: '',
-        W: ''
-    };
-    obj.dBm = parseFloat(value);
-    if (isNaN(obj.dBm)) {
-        obj.dBm = "";
-        return obj;
-    }
-    obj.dBW = obj.dBm - 30;
-    obj.W = exp10(obj.dBW / 10);
-    return obj;
-}
-function W_to_dBWdBm(value) {
-    let obj = {
-        dBW: '',
-        dBm: '',
-        W: ''
-    };
-    obj.W = parseFloat(value);
-    if (isNaN(obj.W) || (obj.W <= 0)) {
-        obj.W = "";
-        return obj;
-    }
-    obj.dBW = 10 * log10(obj.W);
-    obj.dBm = obj.dBW + 30;
-    return obj;
-}
-
 //----------------------------------------------------------
 function cmd_convert_dBV2dBuVV(my_form) {
     var dBV, dBuV, V;
@@ -149,8 +102,256 @@ function cmd_convert_dBuV2dBm(my_form) {
     return (1);
 }
 
+//  W-dBW-dBm
+function dBW_to_dBmW(value) {
+    let obj = {
+        dBW: '',
+        dBm: '',
+        W: ''
+    };
+    obj.dBW = parseFloat(value);
+    if (isNaN(obj.dBW)) {
+        obj.dBW = "";
+        return obj;
+    }
+    obj.W = exp10(obj.dBW / 10);
+    obj.dBm = obj.dBW + 30;
+    return obj;
+}
+function dBm_to_dBWW(value) {
+    let obj = {
+        dBW: '',
+        dBm: '',
+        W: ''
+    };
+    obj.dBm = parseFloat(value);
+    if (isNaN(obj.dBm)) {
+        obj.dBm = "";
+        return obj;
+    }
+    obj.dBW = obj.dBm - 30;
+    obj.W = exp10(obj.dBW / 10);
+    return obj;
+}
+function W_to_dBWdBm(value) {
+    let obj = {
+        dBW: '',
+        dBm: '',
+        W: ''
+    };
+    obj.W = parseFloat(value);
+    if (isNaN(obj.W) || (obj.W <= 0)) {
+        obj.W = "";
+        return obj;
+    }
+    obj.dBW = 10 * log10(obj.W);
+    obj.dBm = obj.dBW + 30;
+    return obj;
+}
+
+// Voltage-standing-wave-ratio
+function perRound(num, precision) {
+    var precision = 3;
+    precision = parseInt(precision);
+    var result1 = num * Math.pow(10, precision);
+    var result2 = Math.round(result1);
+    var result3 = result2 / Math.pow(10, precision);
+    return zerosPad(result3, precision)
+}
+function zerosPad(rndVal, decPlaces) {
+    var valStrg = rndVal.toString();
+    var decLoc = valStrg.indexOf(".");
+    if (decLoc == -1) {
+        decPartLen = 0;
+        valStrg += decPlaces > 0 ? "." : ""
+    } else {
+        decPartLen = valStrg.length - decLoc - 1
+    }
+    var totalPad = decPlaces - decPartLen;
+    if (totalPad > 0) {
+        for (var cntrVal = 1; cntrVal <= totalPad; cntrVal++) valStrg += "0"
+    }
+    return valStrg
+}
+function vswr_main(formData) {
+    let obj = {
+        LOSSPCT: '',
+        LOSSDB: '',
+        PowerRef: '',
+        PowerRefW: '',
+        PowerOut: '',
+        PowerOutW: ''
+    }
+    var PowerIn, PowerRef, PowerOut
+    obj.LOSSPCT = formatvalue(LOSSPCT(formData.VSWR), 5);
+    obj.LOSSDB = formatvalue(LOSSDB(formData.VSWR), 5);
+    PowerIn = 1 * formData.PowerInW;
+    PowerOut = 10 * log10(Output_Power(formData.VSWR, formData.PowerInW));
+    PowerRef = PowerIn - Output_Power(formData.VSWR, formData.PowerInW);
+    obj.PowerRef = formatvalue(10 * log10(PowerRef) + 30, 5);
+    obj.PowerOut = formatvalue(PowerOut + 30, 5);
+    obj.PowerRefW = formatvalue(PowerRef, 5);
+    obj.PowerOutW = formatvalue(Output_Power(formData.VSWR, formData.PowerInW), 5)
+    return obj
+}
+function ChangePowerOut(formData) {
+    let obj = {
+        VSWR: '',
+        LOSSPCT: '',
+        LOSSDB: '',
+        PowerRef: '',
+        PowerRefW: '',
+        PowerOut: '',
+    }
+    var PowerIn, PowerOut, PowerRef, vswr
+    PowerIn = 1 * formData.PowerInW;
+    PowerOut = 1 * formData.PowerOutW;
+    obj.PowerOut = formatvalue(10 * log10(PowerOut) + 30, 5);
+    PowerRef = PowerIn - PowerOut;
+    obj.PowerRefW = formatvalue(PowerRef, 5);
+    obj.PowerRef = formatvalue((10 * log10(PowerRef) + 30), 5);
+    vswr = (1 + Math.sqrt(PowerRef / PowerOut)) / (1 - Math.sqrt(PowerRef / PowerOut));
+    obj.VSWR = formatvalue(vswr, 5);
+    obj.LOSSPCT = formatvalue(LOSSPCT(formData.VSWR), 5);
+    obj.LOSSDB = formatvalue(LOSSDB(formData.VSWR), 5)
+    return obj
+}
+function ChangePowerRef(formData) {
+    let obj = {
+        VSWR: '',
+        LOSSPCT: '',
+        LOSSDB: '',
+        PowerRef: '',
+        PowerOut: '',
+        PowerOutW: ''
+    }
+    var PowerIn, PowerOut, vswr
+    PowerIn = 1 * formData.PowerInW;
+    PowerRef = 1 * formData.PowerRefW;
+    PowerOut = PowerIn - PowerRef;
+    obj.PowerOutW = formatvalue(PowerOut, 5);
+    obj.PowerOut = formatvalue(((10 * log10(PowerOut)) + 30), 5);
+    obj.PowerRef = formatvalue((10 * log10(PowerRef) + 30), 5);
+    vswr = (1 + Math.sqrt(PowerRef / PowerOut)) / (1 - Math.sqrt(PowerRef / PowerOut));
+    obj.VSWR = formatvalue(vswr, 5);
+    obj.LossVSWR.LOSSPCT = formatvalue(LOSSPCT(formData.VSWR), 5);
+    obj.LossVSWR.LOSSDB = formatvalue(LOSSDB(formData.VSWR), 5)
+    return obj
+}
+function PowerRefdBm(formData) {
+    let obj = {
+        PowerRefW: ''
+    }
+    var PowerRefdBm, PowerRef
+    PowerRefdBm = 1 * formData.PowerRef;
+    PowerRef = Math.pow(10, ((PowerRefdBm - 30) / 10));
+    obj.PowerRefW = formatvalue(PowerRef, 5)
+    return obj
+}
+function PowerOutdBm(formData) {
+    let obj = {
+        PowerOutW: ''
+    }
+    var PowerOutdBm, PowerOut
+    PowerOutdBm = 1 * formData.PowerOut;
+    PowerOut = Math.pow(10, ((PowerOutdBm - 30) / 10));
+    obj.PowerOutW = formatvalue(PowerOut, 5)
+    return obj
+}
+function ChangeLossdB(formData) {
+    let obj = {
+        VSWR: ''
+    }
+    var vswr, LOSSDB, LOSSPCT, factor
+    LOSSDB = 1 * formData.LOSSDB;
+    LOSSPCT = 100 * (1 - Math.pow(10, (-LOSSDB / 10)));
+    factor = Math.sqrt(LOSSPCT / 100);
+    vswr = (factor + 1) / (1 - factor);
+    obj.VSWR = formatvalue(vswr, 5)
+    return obj
+}
+function ChangeLossPercent(formData) {
+    let obj = {
+        VSWR: ''
+    }
+    var vswr, LOSSDB, LOSSPCT, factor
+    LOSSPCT = 1 * formData.LOSSPCT;
+    factor = Math.sqrt(LOSSPCT / 100);
+    vswr = (factor + 1) / (1 - factor);
+    obj.VSWR = formatvalue(vswr, 5)
+    return obj
+}
+function LOSSPCT(form_VSWR) {
+    var vswr, loss
+    vswr = 1 * form_VSWR;
+    loss = 100 * Math.pow(((vswr - 1) / (vswr + 1)), 2);
+    return (loss)
+}
+function Output_Power(form_VSWR, form_PowerInW) {
+    var vswr, VSWRfactor, PowerIn
+    vswr = 1 * form_VSWR;
+    VSWRfactor = Math.pow(((vswr - 1) / (vswr + 1)), 2);
+    PowerIn = 1 * form_PowerInW;
+    return (PowerIn / (1 + VSWRfactor))
+}
+function LOSSDB(form_VSWR) {
+    return (-10 * log10(1 - (LOSSPCT(form_VSWR) / 100)))
+}
+function To_Watt(Power) {
+    return (Math.pow(10, (Power / 10)))
+}
+function Convert_To_dBm(formData) {
+    let obj = {
+        PowerIn: '',
+        PowerRef: '',
+        PowerOut: '',
+    }
+    var PowerRef, PowerIn, PowerOut
+    PowerIn = 1 * formData.PowerInW;
+    PowerOut = 1 * formData.PowerRefW;
+    PowerRef = 1 * formData.PowerRefW;
+    obj.PowerIn = formatvalue((10 * log10(PowerIn) + 30), 5);
+    obj.PowerRef = formatvalue((10 * log10(PowerRef) + 30), 5);
+    obj.PowerOut = formatvalue((10 * log10(PowerOut) + 30), 5)
+    return obj
+}
+function Convert_To_Watt(formData) {
+    let obj = {
+        PowerInW: ''
+    }
+    var PowerIn, PowerInW
+    PowerIn = 1 * formData.PowerIn;
+    PowerInW = To_Watt(PowerIn - 30);
+    obj.PowerInW = formatvalue((PowerInW), 5)
+    return obj
+}
+function formatvalue(input, rsize) {
+    var invalid = "**************************";
+    var nines = "999999999999999999999999";
+    var strin = "" + input;
+    var fltin = parseFloat(strin);
+    if (strin.length <= rsize) {
+        return strin;
+    }
+    if (strin.indexOf("e") != -1 || fltin > parseFloat(nines.substring(0, rsize) + ".4")) {
+        return invalid.substring(0, rsize);
+    }
+    var rounded = "" + (fltin + (fltin - parseFloat(strin.substring(0, rsize))));
+    return rounded.substring(0, rsize)
+}
+
+
 export {
     dBW_to_dBmW,
     dBm_to_dBWW,
     W_to_dBWdBm,
+    vswr_main,
+    ChangePowerOut,
+    ChangePowerRef,
+    PowerRefdBm,
+    PowerOutdBm,
+    ChangeLossdB,
+    ChangeLossPercent,
+    Convert_To_dBm,
+    Convert_To_Watt
 }

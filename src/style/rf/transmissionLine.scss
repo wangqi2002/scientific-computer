@@ -1,0 +1,98 @@
+// .slit_line {
+//     $top-height: 260px;
+//     $bottom-height: 180px;
+
+//     height: 100%;
+//     text-align: center;
+
+//     .top {
+//         height: $top-height;
+//         background-color: aliceblue;
+//     }
+//     .bottom {
+//         height: $bottom-height;
+//         background-color: antiquewhite;
+//     }
+// }
+.slit_line {
+    $top-height: 320px;
+    $bottom-height: 180px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        height: $top-height;
+        // background-color: aliceblue;
+
+        .top_top {
+            table {
+                tr {
+                    height: 36px;
+                    td {
+                        .top_span {
+                            width: 15px;
+                            padding: 0 7px 0 5px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+        .top_middle {
+            padding: 20px 0;
+            border-top: 1px solid #bcbcbc;
+            border-bottom: 1px solid #bcbcbc;
+            table {
+                tr {
+                    height: 40px;
+                    td {
+                        .middle_span {
+                            padding: 0 8px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+        .top_bottom {
+            margin-top: 30px;
+            .bottom_span {
+                margin: 0 10px;
+            }
+        }
+        table {
+            margin: 0 auto;
+            tr {
+                text-align: left;
+            }
+        }
+        .big_input {
+            width: 120px;
+            padding-left: 10px;
+        }
+        .small_input {
+            width: 70px;
+            padding-left: 10px;
+        }
+        .btn {
+            width: 60px;
+            height: 20px;
+            border: none;
+            border-radius: 3px;
+            background-color: #c9d4b3;
+        }
+    }
+    .bottom {
+        margin-top: 20px;
+        padding-left: 10%;
+        text-align: left;
+
+        p {
+            line-height: 1.5em;
+            br {
+                text-indent: 2em;
+            }
+        }
+    }
+}
