@@ -1,5 +1,13 @@
 const PI = 3.141592659;
 
+// 取有效数字
+// const formatter = new Intl.NumberFormat('en-US', {
+//     maximumFractionDigits: 5,
+//  });
+
+//  console.log(formatter.format(2.005));
+//  console.log(formatter.format(1.345));
+
 // slit line
 function slitAnalyze(formData) {
     let obj = {}
@@ -224,7 +232,7 @@ function slitSvnthesis(formData) {
     return obj
 }
 
-// strip
+// strip line
 function stripAnalyze(formData) {
     let obj = {}
     let e0 = eval(formData.er);
@@ -275,7 +283,6 @@ function stripAnalyze(formData) {
     obj.l4 = l4
     return obj;
 }
-
 function stripSvnthesis(formData) {
     let obj = {}
     let e0 = eval(formData.er);
@@ -359,9 +366,315 @@ function stripSvnthesis(formData) {
     return obj;
 }
 
+// microstrip line
+function microstripAnalyze(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let h0 = eval(formData.h);
+    let t0 = eval(formData.t) * 1e-3;
+    let f0 = eval(formData.f);
+    let w0 = eval(formData.W);
+    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+        e0 = 4.5;
+        obj.er = e0
+    }
+    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+        h0 = 1;
+        obj.h = h0
+    }
+    if (t0 <= 0 || formData.t == "" || formData.t == undefined) {
+        t0 = 18;
+        obj.t = t0;
+        t0 = t0 * 1e-3
+    }
+    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+        f0 = 1000;
+        obj.f = f0
+    }
+    if (w0 <= 0 || formData.W == "" || formData.W == undefined) {
+        w0 = 1.85192;
+        obj.W = w0
+    }
+    console.log(e0, h0, t0, f0, w0)
+    let a = (1 + 1 / e0) / 2;
+    let k1 = Math.pow((t0 / h0), 2);
+    let k2 = Math.pow((PI * (w0 / t0 + 1.1)), 2);
+    let k3 = Math.sqrt(k1 + 1 / k2);
+    let k4 = Math.log(4 / k3);
+    let dw = t0 * (1 + k4) / PI;
+    let w1 = w0 + a * dw;
+    let k5 = 4 * h0 / w1;
+    let b = ((14 + 8 / e0) / 11) * k5;
+    let k6 = Math.pow(b, 2);
+    let k7 = Math.pow(PI, 2);
+    let k8 = Math.sqrt(k6 + a * k7);
+    let k9 = Math.log(1 + k5 * (b + k8));
+    let k10 = Math.sqrt(e0 + 1);
+    let z = 42.4 / k10 * k9;
+    let ao = 1;
+    let wo = w0 + ao * dw;
+    let k11 = 4 * h0 / wo;
+    let bo = 2 * k11;
+    let k12 = Math.pow(bo, 2);
+    let k13 = Math.sqrt(k12 + ao * k7);
+    let k14 = Math.log(1 + k11 * (bo + k13));
+    let k15 = Math.sqrt(2);
+    let zo = 42.4 / k15 * k14;
+    let ef0 = Math.pow((zo / z), 2);
+    let fp = z / (0.8 * PI * h0);
+    let g = 0.6 + 0.009 * z;
+    let k16 = Math.pow((f0 / fp / 1e3), 2);
+    let ef = e0 - (e0 - ef0) / (1 + g * k16);
+    let k17 = Math.sqrt(ef0 / ef);
+    let zz = z * k17;
+    obj.Zo = zz;
+    obj.ef = ef;
+    let k = Math.sqrt(1 / ef)
+    obj.k = k;
+    let l4 = 30 * 1e10 * k / (f0 * 1e6 * 4);
+    obj.l4 = l4
+    return obj
+}
+function microstripSvnthesis(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let h0 = eval(formData.h);
+    let t0 = eval(formData.t) * 1e-3;
+    let f0 = eval(formData.f);
+    let z0 = eval(formData.Z);
+    let w0 = 1;
+    let ww = 0.5;
+    let ee = 1;
+    let n = 0;
+    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+        e0 = 4.5;
+        obj.er = e0
+    }
+    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+        h0 = 1;
+        obj.h = h0
+    }
+    if (t0 <= 0 || formData.t == "" || formData.t == undefined) {
+        t0 = 18;
+        obj.t = t0;
+        t0 = t0 * 1e-3
+    }
+    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+        f0 = 1000;
+        obj.f = f0
+    }
+    if (z0 <= 0 || formData.Z == "" || formData.Z == undefined) {
+        z0 = 50;
+        obj.Z = z0
+    }
+    let ef = null
+    let frg = 0
+    while (ee > 0.001) {
+        let a = (1 + 1 / e0) / 2;
+        let k1 = Math.pow((t0 / h0), 2);
+        let k2 = Math.pow((PI * (w0 / t0 + 1.1)), 2);
+        let k3 = Math.sqrt(k1 + 1 / k2);
+        let k4 = Math.log(4 / k3);
+        let dw = t0 * (1 + k4) / PI;
+        let w1 = w0 + a * dw;
+        let k5 = 4 * h0 / w1;
+        let b = ((14 + 8 / e0) / 11) * k5;
+        let k6 = Math.pow(b, 2);
+        let k7 = Math.pow(PI, 2);
+        let k8 = Math.sqrt(k6 + a * k7);
+        let k9 = Math.log(1 + k5 * (b + k8));
+        let k10 = Math.sqrt(e0 + 1);
+        let z = 42.4 / k10 * k9;
+        let ao = 1;
+        let wo = w0 + ao * dw;
+        let k11 = 4 * h0 / wo;
+        let bo = 2 * k11;
+        let k12 = Math.pow(bo, 2);
+        let k13 = Math.sqrt(k12 + ao * k7);
+        let k14 = Math.log(1 + k11 * (bo + k13));
+        let k15 = Math.sqrt(2);
+        let zo = 42.4 / k15 * k14;
+        let ef0 = Math.pow((zo / z), 2);
+        let fp = z / (0.8 * PI * h0);
+        let g = 0.6 + 0.009 * z;
+        let k16 = Math.pow((f0 / fp / 1e3), 2);
+        ef = e0 - (e0 - ef0) / (1 + g * k16);
+        let k17 = Math.sqrt(ef0 / ef);
+        let zz = z * k17;
+        let err = zz - z0;
+        ee = Math.abs(err);
+        if (n == 0) {
+            n = 1;
+            if (err < 0) {
+                frg = 0
+            } else {
+                frg = 1
+            }
+        }
+        if (err < 0) {
+            if (frg == 0) {
+                w0 = w0 - ww
+            } else {
+                frg = 0;
+                ww = ww / 2
+            }
+        } else {
+            if (frg == 1) {
+                w0 = w0 + ww
+            } else {
+                frg = 1;
+                ww = ww / 2
+            }
+        }
+    }
+    obj.WW = w0;
+    obj.ef = ef;
+    let k = Math.sqrt(1 / ef)
+    obj.k = k;
+    let l4 = 30 * 1e10 * k / (f0 * 1e6 * 4);
+    obj.l4 = l4
+    return obj
+}
+
+// microstrip line characteristic impedance
+function microstripCI(formData) {
+    let obj = {}
+    // Call maths.pow function 
+    function pwr(x, y) {
+        return Math.pow(x, y)
+    }
+
+    // Round the answer
+    function rnd(Num, Places) {
+        if (Places > 0) {
+            if ((Num.toString().length - Num.toString().lastIndexOf('.')) > (Places + 1)) {
+                var Rounder = pwr(10, Places);
+                return Math.round(Num * Rounder) / Rounder;
+            } else {
+                return Num;
+            }
+        } else {
+            return Math.round(Num);
+        }
+    }
+
+    // Load the text input data into variables as floating point decimals
+    var Er = parseFloat(formData.RelativeDielectricConstant)
+    var W = parseFloat(formData.TrackWidth)
+    var t = parseFloat(formData.TrackThickness)
+    var h = parseFloat(formData.DielectricThickness)
+
+    // Calculate the Effective Dielectric Constant
+    if ((W / h) < 1) {
+        formData.Eeff = (Er + 1) / 2 + (Er - 1) / 2 * ((1 / pwr((1 + (12 * h) / W), 0.5)) + 0.04 * pwr((1 - (W / h)), 2))
+    } else {
+        formData.Eeff = (Er + 1) / 2 + (Er - 1) / 2 * (1 / pwr((1 + (12 * h) / W), 0.5))
+    }
+
+    // Calculate delta W
+    var e = 2.7182818284
+    var PI = 3.1415926535897932
+    var dW = (t / PI) * Math.log((4 * e) / (pwr((t / h), 2) + pwr((1 / PI) / ((W / t) + 1.1), 2)))
+
+    // Calculate delta W' 
+    var dWe = dW * ((1 + (1 / formData.Eeff)) / 2)
+
+    // Calculate We 
+    var We = W + dWe
+
+    // Calculate A
+    var A = ((14 + (8 / formData.Eeff)) / 11) * (4 * h / We)
+
+    // Calculate B
+    var B = pwr((pwr(A, 2) + ((1 + (1 / formData.Eeff)) / 2 * pwr(PI, 2))), 0.5)
+
+    // Calculate the Characteristic Impedance to two decimal places
+    {
+        obj.Impedance = rnd(((120 * PI) / (2 * pwr(2, 0.5) * PI * pwr((Er + 1), 0.5))) * Math.log(1 + ((4 * h / We) * (A + B))), 2)
+
+        // Round the Eeff to three decimal places
+        obj.Eeff = rnd(formData.Eeff, 3)
+    }
+    return obj
+}
+
+// skin effect depth
+function skinED(formData) {
+    let obj = {}
+    // Call maths.pow function 
+    function pwr(x, y) {
+        return Math.pow(x, y)
+    }
+
+    // Round the answer
+    function rnd(Num, Places) {
+        if (Places > 0) {
+            if ((Num.toString().length - Num.toString().lastIndexOf('.')) > (Places + 1)) {
+                var Rounder = pwr(10, Places);
+                return Math.round(Num * Rounder) / Rounder;
+            } else {
+                return Num;
+            }
+        } else {
+            return Math.round(Num);
+        }
+    }
+
+    {
+        // Load the selected conductor data into the variables p & u
+        var ConductorType = formData.material;
+
+        var p = 0;
+        var u = 0;
+
+        if (ConductorType == "Aluminium") {
+            p = 2.6548;
+            u = 1.00002;
+        } else if (ConductorType == "Copper") {
+            p = 1.678;
+            u = 0.999991;
+        } else if (ConductorType == "Gold") {
+            p = 2.24;
+            u = 1.0;
+        } else if (ConductorType == "Nickel") {
+            p = 6.84;
+            u = 600;
+        } else if (ConductorType == "Silver") {
+            p = 1.586;
+            u = 0.99998;
+        }
+    }
+
+    // Load the text input data into variables as floating point decimals
+    {
+        var f = parseFloat(formData.Frequency)
+
+        if (isNaN(f)) {
+            alert("Please enter a valid frequency in MHz")
+            return
+        }
+    }
+
+    // Calculate the result to three decimal places
+    {
+        var PI = 3.1415926535897932
+        var uo = 4 * 0.00000031415926535897932
+
+        obj.Resistivity = p
+        obj.Permeability = u
+
+        obj.Depth = rnd(pwr(p * 0.00000001 / (PI * f * u * uo), 0.5) * 1000, 4)
+    }
+    return obj
+}
+
 export {
     slitAnalyze,
     slitSvnthesis,
     stripAnalyze,
     stripSvnthesis,
+    microstripAnalyze,
+    microstripSvnthesis,
+    microstripCI,
+    skinED,
 }

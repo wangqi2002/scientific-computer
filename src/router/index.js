@@ -50,9 +50,9 @@ const routes = [
         component: () => import('@/components/rf/transmissionLine/Strip-line.vue'),
       },
       {
-        path: 'Microstrip_line_characteristic_impedance',
-        name: 'Microstrip_line_characteristic_impedance',
-        component: () => import('@/components/rf/transmissionLine/Microstrip_line_characteristic_impedance.vue'),
+        path: 'Microstrip-line-characteristic-impedance',
+        name: 'Microstrip-line-characteristic-impedance',
+        component: () => import('@/components/rf/transmissionLine/Microstrip-line-characteristic-impedance.vue'),
       },
       {
         path: 'Microstrip-line',

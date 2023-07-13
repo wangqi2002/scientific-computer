@@ -15,7 +15,8 @@
 //     }
 // }
 .slit_line,
-.strip_line {
+.strip_line,
+.microstrip_line {
     $top-height: 320px;
     $bottom-height: 180px;
 
@@ -93,6 +94,170 @@
             line-height: 1.5em;
             br {
                 text-indent: 2em;
+            }
+        }
+    }
+}
+
+.microstrip_line_CI {
+    $top-height: 260px;
+    $bottom-height: 180px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        .top_left {
+            text-align: right;
+            padding-right: 5%;
+        }
+        .top_right {
+            text-align: left;
+            padding-left: 5%;
+        }
+        .top_card {
+            width: 45%;
+            display: inline-block;
+            .line_title {
+                padding: 0 40px;
+                margin-bottom: 10px;
+                font-size: 16px;
+                font-weight: bolder;
+            }
+            .line_img {
+                width: 350px;
+            }
+        }
+    }
+    .bottom {
+        margin-top: 30px;
+        .bottom_top {
+            margin-bottom: 20px;
+            .bottom_img {
+                width: 250px;
+            }
+        }
+        .bottom_bottom {
+            table {
+                margin: 0 auto;
+                tr {
+                    height: 30px;
+                    text-align: left;
+
+                    td {
+                        .first_span {
+                            width: 115px;
+                            display: inline-block;
+                        }
+                        .td_input {
+                            width: 60px;
+                            padding: 0 3px;
+                            margin: 0 5px;
+                        }
+                        .second_span {
+                            width: 185px;
+                            display: inline-block;
+                        }
+                        .btn {
+                            width: 80px;
+                            height: 25px;
+                            margin: 20px 10px 0;
+                            border: none;
+                            border-radius: 3px;
+                            background-color: #c9d4b3;
+                        }
+                    }
+                }
+                tr:nth-child(6) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.skin_effect_depth {
+    $top-height: 260px;
+    $bottom-height: 180px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        margin-bottom: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid #979797;
+        .top_top {
+            .top_top_left {
+                width: 30%;
+                text-align: right;
+                display: inline-block;
+
+                .top_img {
+                    width: 150px;
+                    margin-bottom: 2em;
+                }
+            }
+            .top_top_right {
+                width: 70%;
+                text-align: left;
+                display: inline-block;
+                line-height: 1.8em;
+                font-size: 18;
+                font-weight: bolder;
+                p {
+                    text-indent: 2em;
+                }
+            }
+        }
+        .top_bottom {
+            margin-top: 10px;
+            text-align: left;
+            line-height: 1.5em;
+        }
+    }
+    .bottom {
+        table {
+            min-width: 680px;
+            margin: 0 auto;
+            tr {
+                height: 45px;
+                text-align: left;
+                td {
+                    .first_span {
+                        width: 200px;
+                        display: inline-block;
+                    }
+                    .material_select {
+                        width: 100px;
+                        padding: 0 3px;
+                        margin: 0 5px;
+                    }
+                    .td_input {
+                        width: 60px;
+                        padding: 0 3px;
+                        margin: 0 5px;
+                    }
+                    .second_span {
+                        width: 175px;
+                        padding-left: 15px;
+                        display: inline-block;
+                    }
+                    .btn {
+                        width: 80px;
+                        height: 25px;
+                        margin: 20px 10px 0;
+                        border: none;
+                        border-radius: 3px;
+                        background-color: #c9d4b3;
+                    }
+                }
+            }
+            tr:nth-child(5) {
+                text-align: center;
+            }
+            tr:nth-child(6) {
+                text-align: center;
             }
         }
     }

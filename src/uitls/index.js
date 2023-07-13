@@ -44,7 +44,7 @@ const exportFormula = () => {
                         },
                         {
                             title: '微带线特征阻抗计算器',
-                            name: 'Microstrip_line_characteristic_impedance',
+                            name: 'Microstrip-line-characteristic-impedance',
                             content: '微带线特征阻抗计算器',
                         },
                         {

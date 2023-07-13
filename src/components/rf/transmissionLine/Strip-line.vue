@@ -105,10 +105,10 @@ import {
 
 const title = ref("带状线计算工具 | Strip Line Calculator");
 
-const er_value = ref(1)
-const b_value = ref(1)
-const t_value = ref(1)
-const f_value = ref(1)
+const er_value = ref()
+const b_value = ref()
+const t_value = ref()
+const f_value = ref()
 const W_value = ref()
 const Zo_value = ref()
 const Z_value = ref()
