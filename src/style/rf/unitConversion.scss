@@ -1,3 +1,49 @@
+.dBm_dBμV_dBmW {
+    $top-height: 260px;
+    $bottom-height: 180px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        text-align: left;
+        .top_title {
+            font-size: 18px;
+            margin: 10px;
+            font-weight: bolder;
+            display: inline-block;
+        }
+        .top_box {
+            .top_left {
+                width: 45%;
+                margin-right: 5%;
+                text-align: right;
+                display: inline-block;
+            }
+            .top_right {
+                width: 45%;
+                margin-left: 5%;
+                text-align: left;
+                display: inline-block;
+            }
+        }
+        .top_bottom {
+            font-size: 16px;
+            margin: 20px 10px;
+            display: inline-block;
+            .el-table {
+                .el-table__cell {
+                    padding: 5px 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .bottom {
+        height: $bottom-height;
+    }
+}
+
 .w_dbw_dbm {
     $top-height: 260px;
     $bottom-height: 180px;
