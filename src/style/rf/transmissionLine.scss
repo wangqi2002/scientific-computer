@@ -262,3 +262,102 @@
         }
     }
 }
+
+.coaxial_line {
+    $top-height: 320px;
+    $bottom-height: 180px;
+
+    height: 100%;
+    text-align: center;
+
+    .top {
+        .top_top {
+            table {
+                tr {
+                    height: 36px;
+                    td {
+                        .top_span {
+                            width: 15px;
+                            padding: 0 7px 0 5px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+        .top_middle {
+            padding: 20px 0;
+            border-top: 1px solid #bcbcbc;
+            border-bottom: 1px solid #bcbcbc;
+            table {
+                tr {
+                    height: 40px;
+                    td {
+                        .middle_span {
+                            padding: 0 8px;
+                            display: inline-block;
+                        }
+                    }
+                }
+                tr:nth-child(3) {
+                    text-align: center;
+                }
+            }
+        }
+        .top_bottom {
+            margin-top: 30px;
+            table {
+                tr {
+                    height: 40px;
+                    td {
+                        .bottom_span {
+                            width: 20px;
+                            margin: 0 10px;
+                            display: inline-block;
+                        }
+                    }
+                }
+                tr:nth-child(4) {
+                    text-align: center;
+                }
+            }
+        }
+        table {
+            margin: 0 auto;
+            tr {
+                text-align: left;
+            }
+        }
+        .big_input {
+            width: 115px;
+            padding: 0 7px;
+        }
+        .middle_input {
+            width: 100px;
+            padding: 0 7px;
+        }
+        .small_input {
+            width: 65px;
+            padding: 0 7px;
+        }
+        .btn {
+            width: 100px;
+            height: 20px;
+            border: none;
+            border-radius: 3px;
+            background-color: #c9d4b3;
+        }
+    }
+    .bottom {
+        width: 500px;
+        margin: 20px calc((100% - 500px) / 2);
+        text-align: left;
+
+        p {
+            line-height: 1.5em;
+            br {
+                text-indent: 2em;
+            }
+        }
+    }
+}

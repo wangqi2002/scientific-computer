@@ -38,6 +38,11 @@ const exportFormula = () => {
                             content: '缝隙线计算工具 | Slot Line Calculator',
                         },
                         {
+                            title: '同轴线计算工具 | Coaxial Line Calculator',
+                            name: 'Coaxial-line',
+                            content: '同轴线计算工具 | Coaxial Line Calculator',
+                        },
+                        {
                             title: '带状线计算工具 | Strip Line Calculator',
                             name: 'Strip-line',
                             content: '带状线计算工具 | Strip Line Calculator',

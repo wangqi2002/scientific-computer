@@ -1,68 +1,93 @@
-function Run(formData) {
+function coaxialAnalyze(formData) {
     let obj = {}
-    // Call maths.pow function 
-    function pwr(x, y) {
-        return Math.pow(x, y)
+    let e0 = eval(formData.er);
+    let a0 = eval(formData.a);
+    let b0 = eval(formData.b);
+    if (e0 <= 0 || formData.er == "") {
+        e0 = 2;
+        obj.er = e0
     }
-
-    // Round the answer
-    function rnd(Num, Places) {
-        if (Places > 0) {
-            if ((Num.toString().length - Num.toString().lastIndexOf('.')) > (Places + 1)) {
-                var Rounder = pwr(10, Places);
-                return Math.round(Num * Rounder) / Rounder;
-            } else {
-                return Num;
-            }
-        } else {
-            return Math.round(Num);
-        }
+    if (a0 <= 0 || formData.a == "") {
+        a0 = 1;
+        obj.a = a0
     }
-
-    {
-        // Load the selected conductor data into the variables p & u
-        var ConductorType = formData.material;
-
-        var p = 0;
-        var u = 0;
-
-        if (ConductorType == "Aluminium") {
-            p = 2.6548;
-            u = 1.00002;
-        } else if (ConductorType == "Copper") {
-            p = 1.678;
-            u = 0.999991;
-        } else if (ConductorType == "Gold") {
-            p = 2.24;
-            u = 1.0;
-        } else if (ConductorType == "Nickel") {
-            p = 6.84;
-            u = 600;
-        } else if (ConductorType == "Silver") {
-            p = 1.586;
-            u = 0.99998;
-        }
+    if (b0 <= 0 || formData.b == "") {
+        b0 = 4;
+        obj.b = b0
     }
-
-    // Load the text input data into variables as floating point decimals
-    {
-        var f = parseFloat(formData.Frequency)
-
-        if (isNaN(f)) {
-            alert("Please enter a valid frequency in MHz")
-            return
-        }
+    if (b0 < a0) {
+        b0 = a0 * 2;
+        obj.b = b0
     }
+    let k1 = Math.log(b0 / a0);
+    let k2 = Math.sqrt(e0);
+    let c = 55.556 * e0 / k1;
+    let l = 200 * k1;
+    let z = 60 * k1 / k2;
+    let v = 3e5 / k2;
+    let t = 3.33 * k2;
+    obj.Z0 = z;
+    obj.Cap = c;
+    obj.Ind = l;
+    obj.Vp = v;
+    obj.Td = t
+    return obj
+}
 
-    // Calculate the result to three decimal places
-    {
-        var PI = 3.1415926535897932
-        var uo = 4 * 0.00000031415926535897932
-
-        obj.Resistivity = p
-        Permeability = u
-
-        obj.Depth = rnd(pwr(p * 0.00000001 / (PI * f * u * uo), 0.5) * 1000, 4)
+function coaxialSvnthesis1(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let a0 = eval(formData.a);
+    let z0 = eval(formData.z);
+    if (e0 <= 0 || formData.er == "") {
+        e0 = 2;
+        obj.er = e0
     }
+    if (a0 <= 0 || formData.a == "") {
+        a0 = 1;
+        obj.a = a0
+    }
+    let k2 = Math.sqrt(e0);
+    let k3 = z0 * k2 / 60;
+    let b0 = a0 * Math.pow(2.718281828, k3);
+    let k1 = Math.log(b0 / a0);
+    let c = 55.556 * e0 / k1;
+    let l = 200 * k1;
+    let v = 3e5 / k2;
+    let t = 3.33 * k2;
+    obj.b = b0;
+    obj.Cap = c;
+    obj.Ind = l;
+    obj.Vp = v;
+    obj.Td = t
+    return obj
+}
+
+function coaxialSvnthesis2(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let b0 = eval(formData.b);
+    let z0 = eval(formData.z);
+    if (e0 <= 0 || formData.er == "") {
+        e0 = 2;
+        obj.er = e0
+    }
+    if (b0 <= 0 || formData.b == "") {
+        b0 = 4;
+        obj.b = b0
+    }
+    let k2 = Math.sqrt(e0);
+    let k3 = z0 * k2 / 60;
+    let a0 = b0 / Math.pow(2.718281828, k3);
+    let k1 = Math.log(b0 / a0);
+    let c = 55.556 * e0 / k1;
+    let l = 200 * k1;
+    let v = 3e5 / k2;
+    let t = 3.33 * k2;
+    obj.a = a0;
+    obj.Cap = c;
+    obj.Ind = l;
+    obj.Vp = v;
+    obj.Td = t
     return obj
 }

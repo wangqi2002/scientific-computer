@@ -45,6 +45,11 @@ const routes = [
         component: () => import('@/components/rf/transmissionLine/Slit-line.vue'),
       },
       {
+        path: 'Coaxial-line',
+        name: 'Coaxial-line',
+        component: () => import('@/components/rf/transmissionLine/Coaxial-line.vue'),
+      },
+      {
         path: 'Strip-line',
         name: 'Strip-line',
         component: () => import('@/components/rf/transmissionLine/Strip-line.vue'),
