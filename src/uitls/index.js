@@ -137,22 +137,6 @@ const exportFormula = () => {
             ]
         },
         {
-            title: '航天航空',
-            name: 'aviation',
-            content: '航天航空',
-            children: [
-                {
-                    title: '导航与大气',
-                    name: 'NavigationAndAtmosphere',
-                    content: '导航与大气',
-                }, {
-                    title: '飞行器',
-                    name: 'aircraft',
-                    content: '飞行器',
-                },
-            ]
-        },
-        {
             title: '其他工具',
             name: 'other',
             content: '其他工具',

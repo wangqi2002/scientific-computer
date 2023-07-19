@@ -21,12 +21,13 @@ const createWindow = () => {
     });
     mainWindow.maximize()
     // 使用 loadURL 加载 http://localhost:9527 ，也就是 Vue 项目地址
-    mainWindow.loadURL("http://localhost:9527/");
+    // mainWindow.loadURL("http://localhost:9527/");
+
     // 如果使用了 nginx 代理，url 改为代理地址
     //   mainWindow.loadURL("https://example.com/");
 
     //打包
-    // mainWindow.loadURL(`file://${path.join(__dirname, "../dist/index.html")}`);
+    mainWindow.loadURL(`file://${path.join(__dirname, "../dist/index.html")}`);
 };
 
 // 在应用准备就绪时调用函数

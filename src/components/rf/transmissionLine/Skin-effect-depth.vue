@@ -84,7 +84,7 @@ import {
     skinED
 } from "@/uitls/compute/rf/transmissionLine"
 
-const title = ref("驻波系数、dBm、dBμV、dBmW、V换算表");
+const title = ref("趋肤效应的深度计算工具 | Skin Effect Depth");
 
 const material_kind = ref("Copper")
 const Frequency_value = ref(1)
