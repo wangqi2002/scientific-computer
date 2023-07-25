@@ -69,6 +69,14 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>
+                                    <span class="bottom_span"><b>Zo</b></span>
+                                    <input class="middle_input" type="number" v-model="Zo_value" @change="" />
+                                    [Ω]
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
                                 <td colspan="2">
                                     <button class="btn" style="width:100px; height:30px" @click="handleClear">清空</button>
                                     <button class="btn" style="width:100px; height:30px" @click="handleCalc">计算</button>
@@ -111,6 +119,7 @@ const b1_value = ref()
 const b2_value = ref()
 const c_value = ref()
 const l_value = ref()
+const Zo_value = ref()
 
 const getFormData = () => {
     let formData = {
@@ -150,6 +159,9 @@ const setFormData = (formData) => {
     if (formData.L !== undefined && formData.L !== NaN) {
         l_value.value = formData.L
     }
+    if (formData.Zo !== undefined && formData.Zo !== NaN) {
+        Zo_value.value = formData.Zo
+    }
 }
 
 const handleCalc = () => {
@@ -165,6 +177,7 @@ const handleClear = () => {
     b2_value.value = ''
     c_value.value = ''
     l_value.value = ''
+    Zo_value.value = ''
 }
 
 </script>

@@ -767,8 +767,8 @@ function coaxialResistance(formData) {
     let f0 = eval(formData.f);  //Hz
     let u0 = eval(formData.ur);  //H/m
     let p0 = eval(formData.p);  //Ω·m
-    let a0 = eval(formData.a);  //m
-    let b0 = eval(formData.b);  //m
+    let d1 = eval(formData.d1);  //m
+    let D1 = eval(formData.D1);  //m
     if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
         f0 = 1;
         obj.f = f0
@@ -781,26 +781,26 @@ function coaxialResistance(formData) {
         p0 = 1.75e-8;
         obj.p = p0
     }
-    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
-        a0 = 1;
-        obj.a = a0
+    if (d1 <= 0 || formData.d1 == "" || formData.d1 == undefined) {
+        d1 = 1;
+        obj.d1 = d1
     }
-    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
-        b0 = 2;
-        obj.b = b0
+    if (D1 <= 0 || formData.D1 == "" || formData.D1 == undefined) {
+        D1 = 2;
+        obj.D1 = D1
     }
-    if (b0 < a0) {
-        b0 = a0 * 2;
-        obj.b = b0
+    if (D1 < d1) {
+        D1 = d1 * 2;
+        obj.b = D1
     }
-    let u = u0 * U0;
+    let u = u0 * U0 * 1e-9;
     let k1 = f0 * u * p0;
     let k2 = k1 / PI
     let k3 = Math.sqrt(k2)
-    let k4 = 1 / (2 * a0)
-    let k5 = 1 / (2 * b0)
+    let k4 = 1 / (2 * d1)
+    let k5 = 1 / (2 * D1)
     let k6 = k3 * (k4 + k5)
-    obj.R = k6;
+    obj.R = k6.toPrecision(5);
     return obj
 }
 
@@ -835,11 +835,14 @@ function parallelCalc(formData) {
     let k2 = Math.log(k1)
     let k3 = PI * E0 * e0
     let c = k3 / k2
-    obj.C = c
+    obj.C = c.toPrecision(5)
     let k4 = U0 * u0
     let k5 = k4 / PI
     let l = k5 * k2
-    obj.L = l
+    obj.L = l.toPrecision(5)
+    let k6 = l / c
+    let zo = Math.sqrt(k6)
+    obj.Zo = zo.toPrecision(5)
     return obj
 }
 
@@ -888,12 +891,15 @@ function EllipticcylinderCalc(formData) {
     let k2 = Math.log(k1)
     let k3 = 2 * PI * E0 * e0
     let c = k3 / k2
-    obj.C = c
+    obj.C = c.toPrecision(5)
     let k4 = U0 * u0
     let k5 = 2 * PI
     let k6 = k5 / k4
     let l = k6 * k2
-    obj.L = l
+    obj.L = l.toPrecision(5)
+    let k7 = l / c
+    let zo = Math.sqrt(k7)
+    obj.Zo = zo.toPrecision(5)
     return obj
 }
 
@@ -928,10 +934,13 @@ function SquarecolumnCalc(formData) {
     let k2 = Math.log(k1)
     let k3 = 8 * E0 * e0
     let c = k3 / k2
-    obj.C = c
+    obj.C = c.toPrecision(5)
     let k4 = U0 * u0 / 8
     let l = k4 * k2
-    obj.L = l
+    obj.L = l.toPrecision(5)
+    let k5 = l / c
+    let zo = Math.sqrt(k5)
+    obj.Zo = zo.toPrecision(5)
     return obj
 }
 
