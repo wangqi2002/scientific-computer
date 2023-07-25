@@ -65,6 +65,21 @@ const routes = [
         component: () => import('@/components/rf/transmissionLine/Microstrip-line.vue'),
       },
       {
+        path: 'Parallel-line',
+        name: 'Parallel-line',
+        component: () => import('@/components/rf/transmissionLine/Parallel-line.vue'),
+      },
+      {
+        path: 'Elliptic-cylinder-line',
+        name: 'Elliptic-cylinder-line',
+        component: () => import('@/components/rf/transmissionLine/Elliptic-cylinder-line.vue'),
+      },
+      {
+        path: 'Square-column-line',
+        name: 'Square-column-line',
+        component: () => import('@/components/rf/transmissionLine/Square-column-line.vue'),
+      },
+      {
         path: 'Skin-effect-depth',
         name: 'Skin-effect-depth',
         component: () => import('@/components/rf/transmissionLine/Skin-effect-depth.vue'),

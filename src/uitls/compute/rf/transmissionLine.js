@@ -1,4 +1,6 @@
 const PI = 3.141592659;
+const E0 = 8.854;   //单位：pF/m
+const U0 = PI * 4e2;   //单位：nH/m
 
 // 取有效数字
 // const formatter = new Intl.NumberFormat('en-US', {
@@ -678,7 +680,7 @@ function coaxialAnalyze(formData) {
         e0 = 2;
         obj.er = e0
     }
-    if (a0 <= 0 || formData.a == "" || formData.er == undefined) {
+    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
         a0 = 1;
         obj.a = a0
     }
@@ -704,7 +706,6 @@ function coaxialAnalyze(formData) {
     obj.Td = t
     return obj
 }
-
 function coaxialSvnthesis1(formData) {
     let obj = {}
     let e0 = eval(formData.er);
@@ -733,7 +734,6 @@ function coaxialSvnthesis1(formData) {
     obj.Td = t
     return obj
 }
-
 function coaxialSvnthesis2(formData) {
     let obj = {}
     let e0 = eval(formData.er);
@@ -762,6 +762,178 @@ function coaxialSvnthesis2(formData) {
     obj.Td = t
     return obj
 }
+function coaxialResistance(formData) {
+    let obj = {}
+    let f0 = eval(formData.f);  //Hz
+    let u0 = eval(formData.ur);  //H/m
+    let p0 = eval(formData.p);  //Ω·m
+    let a0 = eval(formData.a);  //m
+    let b0 = eval(formData.b);  //m
+    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+        f0 = 1;
+        obj.f = f0
+    }
+    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+        u0 = 1;
+        obj.ur = u0
+    }
+    if (p0 <= 0 || formData.p == "" || formData.p == undefined) {
+        p0 = 1.75e-8;
+        obj.p = p0
+    }
+    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+        a0 = 1;
+        obj.a = a0
+    }
+    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+        b0 = 2;
+        obj.b = b0
+    }
+    if (b0 < a0) {
+        b0 = a0 * 2;
+        obj.b = b0
+    }
+    let u = u0 * U0;
+    let k1 = f0 * u * p0;
+    let k2 = k1 / PI
+    let k3 = Math.sqrt(k2)
+    let k4 = 1 / (2 * a0)
+    let k5 = 1 / (2 * b0)
+    let k6 = k3 * (k4 + k5)
+    obj.R = k6;
+    return obj
+}
+
+// Parallel lines
+function parallelCalc(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let u0 = eval(formData.ur);
+    let a0 = eval(formData.a);
+    let d0 = eval(formData.d);
+    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+        e0 = 1;
+        obj.er = e0
+    }
+    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+        u0 = 1;
+        obj.ur = u0
+    }
+    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+        a0 = 1;
+        obj.a = a0
+    }
+    if (d0 <= 0 || formData.d == "" || formData.d == undefined) {
+        d0 = 2;
+        obj.d = d0
+    }
+    if (d0 < a0) {
+        d0 = a0 * 2;
+        obj.d = d0
+    }
+    let k1 = d0 / a0;
+    let k2 = Math.log(k1)
+    let k3 = PI * E0 * e0
+    let c = k3 / k2
+    obj.C = c
+    let k4 = U0 * u0
+    let k5 = k4 / PI
+    let l = k5 * k2
+    obj.L = l
+    return obj
+}
+
+//Elliptic cylinder lines
+function EllipticcylinderCalc(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let u0 = eval(formData.ur);
+    let a1 = eval(formData.a1);
+    let a2 = eval(formData.a2);
+    let b1 = eval(formData.b1);
+    let b2 = eval(formData.b2);
+    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+        e0 = 1;
+        obj.er = e0
+    }
+    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+        u0 = 1;
+        obj.ur = u0
+    }
+    if (a1 <= 0 || formData.a1 == "" || formData.a1 == undefined) {
+        a1 = 2;
+        obj.a1 = a1
+    }
+    if (a2 <= 0 || formData.a2 == "" || formData.a2 == undefined) {
+        a2 = 4;
+        obj.a2 = a2
+    }
+    if (a2 < a1) {
+        a2 = a1 * 2;
+        obj.a2 = a2
+    }
+    if (b1 <= 0 || formData.b1 == "" || formData.b1 == undefined) {
+        b1 = 1;
+        obj.b1 = b1
+    }
+    if (b2 <= 0 || formData.b2 == "" || formData.b2 == undefined) {
+        b2 = 2;
+        obj.b2 = b2
+    }
+    if (b2 < b1) {
+        b2 = b1 * 2;
+        obj.b2 = b2
+    }
+    let k1 = (a2 + b2) / (a1 + b1)
+    let k2 = Math.log(k1)
+    let k3 = 2 * PI * E0 * e0
+    let c = k3 / k2
+    obj.C = c
+    let k4 = U0 * u0
+    let k5 = 2 * PI
+    let k6 = k5 / k4
+    let l = k6 * k2
+    obj.L = l
+    return obj
+}
+
+//Square column lines
+function SquarecolumnCalc(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let u0 = eval(formData.ur);
+    let a0 = eval(formData.a);
+    let b0 = eval(formData.b);
+    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+        e0 = 1;
+        obj.er = e0
+    }
+    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+        u0 = 1;
+        obj.ur = u0
+    }
+    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+        a0 = 1;
+        obj.a = a0
+    }
+    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+        b0 = 2;
+        obj.b = b0
+    }
+    if (b0 < a0) {
+        b0 = a0 * 2;
+        obj.b = b0
+    }
+    let k1 = b0 / a0
+    let k2 = Math.log(k1)
+    let k3 = 8 * E0 * e0
+    let c = k3 / k2
+    obj.C = c
+    let k4 = U0 * u0 / 8
+    let l = k4 * k2
+    obj.L = l
+    return obj
+}
 
 export {
     slitAnalyze,
@@ -775,4 +947,8 @@ export {
     coaxialAnalyze,
     coaxialSvnthesis1,
     coaxialSvnthesis2,
+    coaxialResistance,
+    parallelCalc,
+    EllipticcylinderCalc,
+    SquarecolumnCalc,
 }

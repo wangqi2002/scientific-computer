@@ -125,7 +125,7 @@ import {
     coaxialSvnthesis2
 } from "@/uitls/compute/rf/transmissionLine"
 
-const title = ref("微带线计算工具 | Microstrip Line Calculator");
+const title = ref("同轴线计算工具 | Coaxial Line Calculator");
 
 const er_value = ref()
 const a_value = ref()
