@@ -43,6 +43,11 @@ const exportFormula = () => {
                             content: '缝隙线计算工具 | Slot Line Calculator',
                         },
                         {
+                            title: '共面带线计算器 | Coplanar Strips Calculator',
+                            name: 'Coplanar-strips',
+                            content: '共面带线计算器 | Coplanar Strips Calculator',
+                        },
+                        {
                             title: '同轴线计算工具 | Coaxial Line Calculator',
                             name: 'Coaxial-line',
                             content: '同轴线计算工具 | Coaxial Line Calculator',

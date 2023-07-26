@@ -1,48 +1,167 @@
-const PI = 3.141592659;
-const E0 = 8.854e-12;
-const U0 = PI * 4e-7;   //单位：H/m
 
-
-function coaxialResistance(formData) {
+function CoplanarAnalyze(formData) {
     let obj = {}
-    let f0 = eval(formData.f);  //Hz
-    let u0 = eval(formData.ur);  //H/m
-    let p0 = eval(formData.p);  //Ω·m
-    let d1 = eval(formData.d1);  //m
-    let D1 = eval(formData.D1);  //m
+    let e0 = eval(formData.er);
+    let s0 = eval(formData.s);
+    let w0 = eval(formData.W);
+    let h0 = eval(formData.h);
+    let f0 = eval(formData.f);
+    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+        e0 = 2.6;
+        obj.er = e0
+    }
+    if (s0 <= 0 || formData.s == "" || formData.s == undefined) {
+        s0 = 1;
+        obj.s = s0
+    }
+    if (w0 <= 0 || formData.W == "" || formData.W == undefined) {
+        w0 = 0.5;
+        obj.W = w0
+    }
+    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+        h0 = 0.6;
+        obj.h = h0
+    }
     if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
-        f0 = 1;
+        f0 = 1000;
         obj.f = f0
     }
-    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
-        u0 = 1;
-        obj.ur = u0
+    let a = s0 / 2;
+    let b = a + w0;
+    let k = a / b;
+    let kd = Math.sqrt(1 - k * k);
+    let sk = Math.sqrt(k);
+    let skd = Math.sqrt(kd);
+    let k1 = PI * a / (2 * h0);
+    let k2 = PI * b / (2 * h0);
+    let ex1 = Math.exp(k1);
+    let ex2 = Math.exp(-k1);
+    let ex3 = Math.exp(k2);
+    let ex4 = Math.exp(-k2);
+    let k1x = ((ex1 - ex2) / 2) / ((ex3 - ex4) / 2);
+    let k1y = Math.sqrt(1 - k1x * k1x);
+    let sk1 = Math.sqrt(k1x);
+    let sk1d = Math.sqrt(k1y);
+    let kk = 0
+    let kk1 = 0
+    if (k < 0.7) {
+        kk = 1 / (Math.log(2 * (1 + skd) / (1 - skd)) / PI)
+    } else {
+        kk = Math.log(2 * (1 + sk) / (1 - sk)) / PI
     }
-    if (p0 <= 0 || formData.p == "" || formData.p == undefined) {
-        p0 = 1.75e-8;
-        obj.p = p0
+    if (k1x < 0.7) {
+        kk1 = 1 / (Math.log(2 * (1 + sk1d) / (1 - sk1d)) / PI)
+    } else {
+        kk1 = Math.log(2 * (1 + sk1) / (1 - sk1)) / PI
     }
-    if (d1 <= 0 || formData.d1 == "" || formData.d1 == undefined) {
-        d1 = 1;
-        obj.d1 = d1
-    }
-    if (D1 <= 0 || formData.D1 == "" || formData.D1 == undefined) {
-        D1 = 2;
-        obj.D1 = D1
-    }
-    if (D1 < d1) {
-        D1 = d1 * 2;
-        obj.b = D1
-    }
-    let u = u0 * U0;
-    let k1 = f0 * u * p0;
-    let k2 = k1 / PI
-    let k3 = Math.sqrt(k2)
-    let k4 = 1 / (2 * d1)
-    let k5 = 1 / (2 * D1)
-    let k6 = k3 * (k4 + k5)
-    obj.R = k6;
-    return obj
+    let ef = 1 + (e0 - 1) / 2 * kk1 / kk;
+    let z = 120 * PI * kk / Math.sqrt(ef);
+    obj.Zo = z;
+    obj.eff = ef;
+    k = 1 / Math.sqrt(ef);
+    obj.k = k;
+    let l4 = 30 * 1e10 * k / (f0 * 1e6 * 4);
+    obj.l4 = l4
+    return obj;
 }
-
-console.log(coaxialResistance({}))
+function CoplanarSvnthesis(formData) {
+    let obj = {}
+    let e0 = eval(formData.er);
+    let s0 = eval(formData.s);
+    let h0 = eval(formData.h);
+    let f0 = eval(formData.f);
+    let z0 = eval(formData.Z);
+    if (e0 <= 0 || f.er == "" || f.er == undefined) {
+        e0 = 2.6;
+        obj.er = e0
+    }
+    if (s0 <= 0 || formData.s == "" || formData.s == undefined) {
+        s0 = 1;
+        obj.s = s0
+    }
+    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+        h0 = 0.6;
+        obj.h = h0
+    }
+    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+        f0 = 1000;
+        obj.f = f0
+    }
+    if (z0 <= 0 || formData.Z == "" || formData.Z == undefined) {
+        z0 = 50;
+        obj.Z = z0
+    }
+    let w0 = s0;
+    let ww = s0 * 0.5;
+    if (z0 < 70) {
+        ww = s0 * 10
+    }
+    let ee = 1;
+    let n = 0;
+    let ef = 0;
+    let frg = 0
+    while (ee > 0.001) {
+        let a = s0 / 2;
+        let b = a + w0;
+        let k = a / b;
+        let kd = Math.sqrt(1 - k * k);
+        let sk = Math.sqrt(k);
+        let skd = Math.sqrt(kd);
+        let k1 = PI * a / (2 * h0);
+        let k2 = PI * b / (2 * h0);
+        let ex1 = Math.exp(k1);
+        let ex2 = Math.exp(-k1);
+        let ex3 = Math.exp(k2);
+        let ex4 = Math.exp(-k2);
+        let k1x = ((ex1 - ex2) / 2) / ((ex3 - ex4) / 2);
+        let k1y = Math.sqrt(1 - k1x * k1x);
+        let sk1 = Math.sqrt(k1x);
+        let sk1d = Math.sqrt(k1y);
+        let kk = 0
+        let kk1 = 0
+        if (k < 0.7) {
+            kk = 1 / (Math.log(2 * (1 + skd) / (1 - skd)) / PI)
+        } else {
+            kk = Math.log(2 * (1 + sk) / (1 - sk)) / PI
+        }
+        if (k1x < 0.7) {
+            kk1 = 1 / (Math.log(2 * (1 + sk1d) / (1 - sk1d)) / PI)
+        } else {
+            kk1 = Math.log(2 * (1 + sk1) / (1 - sk1)) / PI
+        }
+        ef = 1 + (e0 - 1) / 2 * kk1 / kk;
+        let z = 120 * PI * kk / Math.sqrt(ef);
+        let err = z - z0;
+        ee = Math.abs(err);
+        if (n == 0) {
+            n = 1;
+            if (err < 0) {
+                frg = 0
+            } else {
+                frg = 1
+            }
+        }
+        if (err < 0) {
+            if (frg == 0) {
+                w0 = w0 - ww
+            } else {
+                frg = 0;
+                ww = ww / 2
+            }
+        } else {
+            if (frg == 1) {
+                w0 = w0 + ww
+            } else {
+                frg = 1;
+                ww = ww / 2
+            }
+        }
+    }
+    obj.ww = w0;
+    obj.eff = ef;
+    let k = 1 / Math.sqrt(ef);
+    obj.k = k;
+    let l4 = 30 * 1e10 * k / (f0 * 1e6 * 4);
+    obj.l4 = l4
+    return obj;
+}

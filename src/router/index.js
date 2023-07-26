@@ -50,6 +50,11 @@ const routes = [
         component: () => import('@/components/rf/transmissionLine/Coaxial-line.vue'),
       },
       {
+        path: 'Coplanar-strips',
+        name: 'Coplanar-strips',
+        component: () => import('@/components/rf/transmissionLine/Coplanar-strips.vue'),
+      },
+      {
         path: 'Strip-line',
         name: 'Strip-line',
         component: () => import('@/components/rf/transmissionLine/Strip-line.vue'),
