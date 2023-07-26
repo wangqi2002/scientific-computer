@@ -210,6 +210,7 @@ const Cap_value = ref()
 const Ind_value = ref()
 const Vp_value = ref()
 const Td_value = ref()
+
 const f_value = ref()
 const ur_value = ref()
 const p_value = ref()
@@ -225,9 +226,9 @@ const getFormData = () => {
         Zo: Zo_value.value,
         Z: Z_value.value,
         Cap: Cap_value.value,
-        Ind: Ind_value.value,
-        Vp: Vp_value.value,
-        Td: Td_value.value
+        // Ind: Ind_value.value,
+        // Vp: Vp_value.value,
+        // Td: Td_value.value
     }
     return formData
 }
@@ -293,7 +294,7 @@ const setFormData1 = (formData) => {
 }
 
 const handleClick = () => {
-    console.log(activeName.value)
+    // console.log(activeName.value)
 }
 const handleAnalyze = () => {
     let formData = getFormData()

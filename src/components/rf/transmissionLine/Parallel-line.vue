@@ -110,9 +110,9 @@ const getFormData = () => {
         er: er_value.value,
         ur: ur_value.value,
         a: a_value.value,
-        b: d_value.value,
-        c: c_value.value,
-        l: l_value.value,
+        d: d_value.value,
+        // c: c_value.value,
+        // l: l_value.value,
     }
     return formData
 }
