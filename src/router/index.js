@@ -30,6 +30,11 @@ const routes = [
         component: () => import('@/components/rf/unitConversion/dBm-dBμV-dBmW.vue'),
       },
       {
+        path: 'vpp-W',
+        name: 'vpp-W',
+        component: () => import('@/components/rf/unitConversion/vpp-W.vue'),
+      },
+      {
         path: 'helical-inductance',
         name: 'helical-inductance',
         component: () => import('@/components/circuit/inductance/helical-inductance.vue'),

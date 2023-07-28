@@ -90,11 +90,6 @@
                         输入Zo，点击[Svnthesis]按钮。
                     </p>
                     <p>3.给出了计算结果。</p>
-
-                    <p><b>[注]超出以下范围，计算精度会变差。</b>
-                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* er=2.2~9.7—W/lambda: 0.0015~1.0
-                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* er=9.7~20.0—W/h: 0.020~1.0
-                    </p>
                 </div>
             </div>
         </div>

@@ -102,6 +102,18 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="bottom">
+                            <b>[如何使用]</b>
+                            <p>1. &nbsp;输入介电常数。</p>
+                            <p>2.
+                                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)计算某同轴线路的特性阻抗(Zo)时。
+                                输入内导体的直径，外导体的直径，
+                                然后点击[Analyze]按钮。
+                                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)计算具有一定特性阻抗的同轴线直径时。
+                                输入任一导体的直径，点击[Svnthesis]按钮。
+                            </p>
+                            <p>3.给出了计算结果。</p>
+                        </div>
                     </el-tab-pane>
                     <el-tab-pane label="电阻" name="second">
                         <div class="top">
@@ -171,18 +183,6 @@
                         </div>
                     </el-tab-pane>
                 </el-tabs>
-                <div class="bottom">
-                    <b>[如何使用]</b>
-                    <p>1. &nbsp;输入电路板参数和中心频率。</p>
-                    <p>2.
-                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)计算某同轴线路的特性阻抗(Zo)时。
-                        输入内导体的直径，外导体的直径，
-                        然后点击[Analyze]按钮。
-                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)计算具有一定特性阻抗的同轴线直径时。
-                        输入任一导体的直径，点击[Svnthesis]按钮。
-                    </p>
-                    <p>3.给出了计算结果。</p>
-                </div>
             </div>
         </div>
     </div>

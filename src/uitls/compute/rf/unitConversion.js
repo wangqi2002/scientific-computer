@@ -340,6 +340,72 @@ function formatvalue(input, rsize) {
     return rounded.substring(0, rsize)
 }
 
+// vpp-w
+function VppToWdbm(formData) {
+    let obj = {};
+    let vpp = formData.vpp1;
+    let R = formData.R;
+    if (vpp < 0 || formData.vpp1 == "" || formData.vpp1 == undefined) {
+        vpp = 1;
+        obj.vpp1 = vpp
+    }
+    if (R < 0 || formData.R == "" || formData.R == undefined) {
+        R = 50;
+        obj.R = R
+    }
+    let k1 = vpp / (2 * Math.sqrt(2))
+    let k2 = k1 * k1
+    let w = k2 / R
+    obj.w1 = w
+    let k3 = log10(w)
+    let d = 10 * k3 + 30
+    obj.d1 = d
+    return obj
+}
+function dBmToVppW(formData) {
+    let obj = {};
+    let d = formData.d2;
+    let R = formData.R;
+    if (d < 0 || formData.d2 == "" || formData.d2 == undefined) {
+        d = 1;
+        obj.d2 = d
+    }
+    if (R < 0 || formData.R == "" || formData.R == undefined) {
+        R = 50;
+        obj.R = R
+    }
+    let k1 = d / 10
+    let k2 = 10 ** k1
+    let w = k2 * 0.001
+    obj.w2 = w
+    let k3 = w * R
+    let k4 = Math.sqrt(k3)
+    let vpp = k4 * (2 * Math.sqrt(2))
+    obj.vpp2 = vpp
+    return obj
+}
+function WTodBmVpp(formData) {
+    let obj = {};
+    let w = formData.w3;
+    let R = formData.R;
+    if (w < 0 || formData.w3 == "" || formData.w3 == undefined) {
+        w = 1;
+        obj.w3 = w
+    }
+    if (R < 0 || formData.R == "" || formData.R == undefined) {
+        R = 50;
+        obj.R = R
+    }
+    let k1 = w * R
+    let k2 = Math.sqrt(k1)
+    let vpp = k2 * (2 * Math.sqrt(2))
+    obj.vpp3 = vpp
+    let k3 = log10(w)
+    let d = 10 * k3 + 30
+    obj.d3 = d
+    return obj
+}
+
 
 export {
     dBW_to_dBmW,
@@ -353,5 +419,8 @@ export {
     ChangeLossdB,
     ChangeLossPercent,
     Convert_To_dBm,
-    Convert_To_Watt
+    Convert_To_Watt,
+    VppToWdbm,
+    dBmToVppW,
+    WTodBmVpp,
 }

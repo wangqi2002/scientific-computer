@@ -29,6 +29,11 @@ const exportFormula = () => {
                             title: '电压驻波比计算器',
                             name: 'Voltage-standing-wave-ratio',
                             content: '电压驻波比计算器',
+                        },
+                        {
+                            title: 'vpp、W、dBm 单位转换',
+                            name: 'vpp-W',
+                            content: 'vpp、W、dBm 单位转换',
                         }
                     ]
                 },
