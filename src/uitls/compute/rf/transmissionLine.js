@@ -17,23 +17,23 @@ function slitAnalyze(formData) {
     let h0 = eval(formData.h);
     let f0 = eval(formData.f);
     let w0 = eval(formData.W);
-    if (e0 < 2.2 || formData.er == "" || formData.er == undefined) {
+    if (e0 < 2.2 || formData.er === "" || formData.er == undefined) {
         e0 = 2.2;
         obj.er = e0
     }
-    if (e0 > 20 || formData.er == "" || formData.er == undefined) {
+    if (e0 > 20 || formData.er === "" || formData.er == undefined) {
         e0 = 20;
         obj.er = e0
     }
-    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+    if (h0 <= 0 || formData.h === "" || formData.h == undefined) {
         h0 = 1;
         obj.h = h0
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (w0 <= 0 || formData.W == "" || formData.W == undefined) {
+    if (w0 <= 0 || formData.W === "" || formData.W == undefined) {
         w0 = 0.1;
         obj.W = w0
     }
@@ -118,19 +118,19 @@ function slitSvnthesis(formData) {
     let ww = 0.3;
     let ee = 1;
     let n = 0;
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 10;
         obj.er = e0
     }
-    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+    if (h0 <= 0 || formData.h === "" || formData.h == undefined) {
         h0 = 1;
         obj.h = h0
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (z0 <= 0 || formData.Z == "" || formData.Z == undefined) {
+    if (z0 <= 0 || formData.Z === "" || formData.Z == undefined) {
         z0 = 100;
         obj.Z = z0
     }
@@ -242,23 +242,23 @@ function CoplanarAnalyze(formData) {
     let w0 = eval(formData.W);
     let h0 = eval(formData.h);
     let f0 = eval(formData.f);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 2.6;
         obj.er = e0
     }
-    if (s0 <= 0 || formData.s == "" || formData.s == undefined) {
+    if (s0 <= 0 || formData.s === "" || formData.s == undefined) {
         s0 = 1;
         obj.s = s0
     }
-    if (w0 <= 0 || formData.W == "" || formData.W == undefined) {
+    if (w0 <= 0 || formData.W === "" || formData.W == undefined) {
         w0 = 0.5;
         obj.W = w0
     }
-    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+    if (h0 <= 0 || formData.h === "" || formData.h == undefined) {
         h0 = 0.6;
         obj.h = h0
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
@@ -307,23 +307,23 @@ function CoplanarSvnthesis(formData) {
     let h0 = eval(formData.h);
     let f0 = eval(formData.f);
     let z0 = eval(formData.Z);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 2.6;
         obj.er = e0
     }
-    if (s0 <= 0 || formData.s == "" || formData.s == undefined) {
+    if (s0 <= 0 || formData.s === "" || formData.s == undefined) {
         s0 = 1;
         obj.s = s0
     }
-    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+    if (h0 <= 0 || formData.h === "" || formData.h == undefined) {
         h0 = 0.6;
         obj.h = h0
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (z0 <= 0 || formData.Z == "" || formData.Z == undefined) {
+    if (z0 <= 0 || formData.Z === "" || formData.Z == undefined) {
         z0 = 50;
         obj.Z = z0
     }
@@ -410,24 +410,24 @@ function stripAnalyze(formData) {
     let t0 = eval(formData.t) * 1e-3;
     let f0 = eval(formData.f);
     let w0 = eval(formData.W);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 4.5;
         obj.er = e0
     }
-    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+    if (b0 <= 0 || formData.b === "" || formData.b == undefined) {
         b0 = 1;
         obj.b = b0
     }
-    if (t0 <= 0 || formData.t == "" || formData.t == undefined) {
+    if (t0 <= 0 || formData.t === "" || formData.t == undefined) {
         t0 = 18;
         obj.t = t0;
         t0 = t0 * 1e-3
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (w0 <= 0 || formData.W == "" || formData.W == undefined) {
+    if (w0 <= 0 || formData.W === "" || formData.W == undefined) {
         w0 = 0.41132;
         obj.W = w0
     }
@@ -464,24 +464,24 @@ function stripSvnthesis(formData) {
     let ww = 0.5;
     let ee = 1;
     let n = 0;
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 4.5;
         obj.er = e0
     }
-    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+    if (b0 <= 0 || formData.b === "" || formData.b == undefined) {
         b0 = 1;
         obj.b = b0
     }
-    if (t0 <= 0 || formData.t == "" || formData.t == undefined) {
+    if (t0 <= 0 || formData.t === "" || formData.t == undefined) {
         t0 = 18;
         obj.t = t0;
         t0 = t0 * 1e-3
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (z0 <= 0 || formData.Z == "" || formData.Z == undefined) {
+    if (z0 <= 0 || formData.Z === "" || formData.Z == undefined) {
         z0 = 50;
         obj.Z = z0
     }
@@ -544,24 +544,24 @@ function microstripAnalyze(formData) {
     let t0 = eval(formData.t) * 1e-3;
     let f0 = eval(formData.f);
     let w0 = eval(formData.W);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 4.5;
         obj.er = e0
     }
-    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+    if (h0 <= 0 || formData.h === "" || formData.h == undefined) {
         h0 = 1;
         obj.h = h0
     }
-    if (t0 <= 0 || formData.t == "" || formData.t == undefined) {
+    if (t0 <= 0 || formData.t === "" || formData.t == undefined) {
         t0 = 18;
         obj.t = t0;
         t0 = t0 * 1e-3
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (w0 <= 0 || formData.W == "" || formData.W == undefined) {
+    if (w0 <= 0 || formData.W === "" || formData.W == undefined) {
         w0 = 1.85192;
         obj.W = w0
     }
@@ -616,24 +616,24 @@ function microstripSvnthesis(formData) {
     let ww = 0.5;
     let ee = 1;
     let n = 0;
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 4.5;
         obj.er = e0
     }
-    if (h0 <= 0 || formData.h == "" || formData.h == undefined) {
+    if (h0 <= 0 || formData.h === "" || formData.h == undefined) {
         h0 = 1;
         obj.h = h0
     }
-    if (t0 <= 0 || formData.t == "" || formData.t == undefined) {
+    if (t0 <= 0 || formData.t === "" || formData.t == undefined) {
         t0 = 18;
         obj.t = t0;
         t0 = t0 * 1e-3
     }
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1000;
         obj.f = f0
     }
-    if (z0 <= 0 || formData.Z == "" || formData.Z == undefined) {
+    if (z0 <= 0 || formData.Z === "" || formData.Z == undefined) {
         z0 = 50;
         obj.Z = z0
     }
@@ -844,15 +844,15 @@ function coaxialAnalyze(formData) {
     let e0 = eval(formData.er);
     let a0 = eval(formData.a);
     let b0 = eval(formData.b);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 2;
         obj.er = e0
     }
-    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+    if (a0 <= 0 || formData.a === "" || formData.a == undefined) {
         a0 = 1;
         obj.a = a0
     }
-    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+    if (b0 <= 0 || formData.b === "" || formData.b == undefined) {
         b0 = 4;
         obj.b = b0
     }
@@ -879,11 +879,11 @@ function coaxialSvnthesis1(formData) {
     let e0 = eval(formData.er);
     let a0 = eval(formData.a);
     let z0 = eval(formData.z);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 2;
         obj.er = e0
     }
-    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+    if (a0 <= 0 || formData.a === "" || formData.a == undefined) {
         a0 = 1;
         obj.a = a0
     }
@@ -907,11 +907,11 @@ function coaxialSvnthesis2(formData) {
     let e0 = eval(formData.er);
     let b0 = eval(formData.b);
     let z0 = eval(formData.z);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 2;
         obj.er = e0
     }
-    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+    if (b0 <= 0 || formData.b === "" || formData.b == undefined) {
         b0 = 4;
         obj.b = b0
     }
@@ -937,23 +937,23 @@ function coaxialResistance(formData) {
     let p0 = eval(formData.p);  //Ω·m
     let d1 = eval(formData.d1);  //m
     let D1 = eval(formData.D1);  //m
-    if (f0 <= 0 || formData.f == "" || formData.f == undefined) {
+    if (f0 <= 0 || formData.f === "" || formData.f == undefined) {
         f0 = 1;
         obj.f = f0
     }
-    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+    if (u0 <= 0 || formData.ur === "" || formData.ur == undefined) {
         u0 = 1;
         obj.ur = u0
     }
-    if (p0 <= 0 || formData.p == "" || formData.p == undefined) {
+    if (p0 <= 0 || formData.p === "" || formData.p == undefined) {
         p0 = 1.75e-8;
         obj.p = p0
     }
-    if (d1 <= 0 || formData.d1 == "" || formData.d1 == undefined) {
+    if (d1 <= 0 || formData.d1 === "" || formData.d1 == undefined) {
         d1 = 1;
         obj.d1 = d1
     }
-    if (D1 <= 0 || formData.D1 == "" || formData.D1 == undefined) {
+    if (D1 <= 0 || formData.D1 === "" || formData.D1 == undefined) {
         D1 = 2;
         obj.D1 = D1
     }
@@ -979,19 +979,19 @@ function parallelCalc(formData) {
     let u0 = eval(formData.ur);
     let a0 = eval(formData.a);
     let d0 = eval(formData.d);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 1;
         obj.er = e0
     }
-    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+    if (u0 <= 0 || formData.ur === "" || formData.ur == undefined) {
         u0 = 1;
         obj.ur = u0
     }
-    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+    if (a0 <= 0 || formData.a === "" || formData.a == undefined) {
         a0 = 1;
         obj.a = a0
     }
-    if (d0 <= 0 || formData.d == "" || formData.d == undefined) {
+    if (d0 <= 0 || formData.d === "" || formData.d == undefined) {
         d0 = 2;
         obj.d = d0
     }
@@ -1023,19 +1023,19 @@ function EllipticcylinderCalc(formData) {
     let a2 = eval(formData.a2);
     let b1 = eval(formData.b1);
     let b2 = eval(formData.b2);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 1;
         obj.er = e0
     }
-    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+    if (u0 <= 0 || formData.ur === "" || formData.ur == undefined) {
         u0 = 1;
         obj.ur = u0
     }
-    if (a1 <= 0 || formData.a1 == "" || formData.a1 == undefined) {
+    if (a1 <= 0 || formData.a1 === "" || formData.a1 == undefined) {
         a1 = 2;
         obj.a1 = a1
     }
-    if (a2 <= 0 || formData.a2 == "" || formData.a2 == undefined) {
+    if (a2 <= 0 || formData.a2 === "" || formData.a2 == undefined) {
         a2 = 4;
         obj.a2 = a2
     }
@@ -1043,11 +1043,11 @@ function EllipticcylinderCalc(formData) {
         a2 = a1 * 2;
         obj.a2 = a2
     }
-    if (b1 <= 0 || formData.b1 == "" || formData.b1 == undefined) {
+    if (b1 <= 0 || formData.b1 === "" || formData.b1 == undefined) {
         b1 = 1;
         obj.b1 = b1
     }
-    if (b2 <= 0 || formData.b2 == "" || formData.b2 == undefined) {
+    if (b2 <= 0 || formData.b2 === "" || formData.b2 == undefined) {
         b2 = 2;
         obj.b2 = b2
     }
@@ -1078,19 +1078,19 @@ function SquarecolumnCalc(formData) {
     let u0 = eval(formData.ur);
     let a0 = eval(formData.a);
     let b0 = eval(formData.b);
-    if (e0 <= 0 || formData.er == "" || formData.er == undefined) {
+    if (e0 <= 0 || formData.er === "" || formData.er == undefined) {
         e0 = 1;
         obj.er = e0
     }
-    if (u0 <= 0 || formData.ur == "" || formData.ur == undefined) {
+    if (u0 <= 0 || formData.ur === "" || formData.ur == undefined) {
         u0 = 1;
         obj.ur = u0
     }
-    if (a0 <= 0 || formData.a == "" || formData.a == undefined) {
+    if (a0 <= 0 || formData.a === "" || formData.a == undefined) {
         a0 = 1;
         obj.a = a0
     }
-    if (b0 <= 0 || formData.b == "" || formData.b == undefined) {
+    if (b0 <= 0 || formData.b === "" || formData.b == undefined) {
         b0 = 2;
         obj.b = b0
     }
