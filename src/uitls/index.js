@@ -3,7 +3,7 @@ const exportFormula = () => {
         {
             title: 'welcome',
             name: 'welcome',
-            content: '写一些简介或者放些图片进行装饰',
+            content: '射频相关公式计算器、转换器',
         },
         {
             title: '射频工具',

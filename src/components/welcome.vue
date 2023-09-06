@@ -10,5 +10,9 @@ import { ref } from "vue";
 const msg = ref("Welcome to Scientific Computer");
 
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.welcome_box {
+    margin: 200px 100px;
+}
+</style>
   
